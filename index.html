@@ -6,129 +6,136 @@
     <title>KmarinEOOD | Marine Technical Supply & Logistics</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Базовые стили */
+        /* БАЗОВЫЕ СТИЛИ И ЕДИНЫЙ ЯРКИЙ ФОН */
         * { margin:0; padding:0; box-sizing:border-box; }
         body { 
             font-family:'Poppins', sans-serif; 
             color:#333; 
             line-height:1.6; 
             overflow-x: hidden;
-            background-color: #f0f4f8;
-        }
-
-        /* ШАПКА САЙТА */
-        header {
-            position:fixed; top:0; width:100%; z-index:1000;
-            background: rgba(0, 32, 63, 0.85); 
-            backdrop-filter: blur(12px);
-            padding: 10px 8%;
-            display:flex; justify-content:space-between; align-items:center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .logo-img { width: 280px; height: 60px; object-fit: contain; filter: brightness(1.1); }
-        header nav a { color:white; text-decoration:none; margin-left:25px; font-weight:500; transition:0.3s; font-size: 15px; text-transform: uppercase; }
-        header nav a:hover { color:#00aaff; }
-
-        /* ГЛАВНЫЙ ЭКРАН */
-        .hero {
-            position:relative; height:100vh; display:flex; align-items:center; 
-            justify-content:center; text-align:center; color:white; overflow:hidden;
-        }
-        .hero-video {
-            position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
-            width: auto; height: auto; transform: translate(-50%, -50%);
-            z-index: -1; filter: brightness(0.4) saturate(1.2);
-        }
-        /* Градиент поверх видео для глубины */
-        .hero::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(0,32,63,0.5) 0%, rgba(0,0,0,0) 100%);
-            z-index: -1;
-        }
-        .hero-content h1 { font-size: 75px; margin-bottom: 10px; letter-spacing: 4px; text-transform: uppercase; text-shadow: 2px 4px 10px rgba(0,0,0,0.5); }
-        .hero-content p { font-size: 24px; font-weight: 300; opacity: 0.9; letter-spacing: 1px; }
-
-        /* ОБЩИЙ ФОН ДЛЯ КОНТЕНТА */
-        .sea-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                              url('https://images.unsplash.com/photo-1524522173746-f628baad3644?auto=format&fit=crop&q=80&w=2000'); /* Крупный план судна/порта */
-            background-attachment: fixed;
+            /* ВАШЕ ИЗОБРАЖЕНИЕ: ПРОЯВЛЕННОЕ, ЯРКОЕ, НА ВЕСЬ ЭКРАН */
+            background-image: 
+                linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.6) 100%), /* Легкий градиент для читаемости */
+                url('https://images.unsplash.com/photo-1524522173746-f628baad3644?auto=format&fit=crop&q=80&w=2500');
+            background-attachment: fixed; /* Эффект параллакса при скролле */
             background-size: cover;
             background-position: center;
         }
 
-        section { padding: 100px 10%; }
-        h2 { text-align:center; margin-bottom:50px; font-size:42px; color:#002b4e; text-transform: uppercase; }
-        h2::after { content: ''; display: block; width: 80px; height: 4px; background: #00aaff; margin: 15px auto; border-radius: 2px; }
+        /* ШАПКА САЙТА (Более насыщенный синий) */
+        header {
+            position:fixed; top:0; width:100%; z-index:1000;
+            background: rgba(0, 32, 63, 0.9); 
+            backdrop-filter: blur(12px);
+            padding: 15px 8%;
+            display:flex; justify-content:space-between; align-items:center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo-img { width: 280px; height: 65px; object-fit: contain; }
+        header nav a { color:white; text-decoration:none; margin-left:30px; font-weight:500; transition:0.3s; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
+        header nav a:hover { color:#00aaff; }
 
-        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
+        /* ГЛАВНЫЙ ЭКРАН (Теперь поверх фото) */
+        .hero {
+            height:100vh; display:flex; align-items:center; 
+            justify-content:center; text-align:center; color:white; 
+            /* Дополнительное легкое затемнение ТОЛЬКО в этой зоне для супер-читаемости заголовка */
+            background: rgba(0,0,0,0.2); 
+        }
+        .hero-content h1 { 
+            font-size: 80px; margin-bottom: 15px; letter-spacing: 5px; 
+            text-transform: uppercase; 
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6); /* Мощная тень для текста */
+        }
+        .hero-content p { 
+            font-size: 26px; font-weight: 300; opacity: 0.95; 
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        /* СТИЛИЗАЦИЯ СЕКЦИЙ (Эффект стекла) */
+        section { padding: 120px 10%; position: relative; z-index: 1; }
         
-        /* КАРТОЧКИ С ЭФФЕКТОМ СТЕКЛА */
+        /* Класс для создания светлых "стеклянных" блоков */
+        .glass-section {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(255,255,255,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        h2 { text-align:center; margin-bottom:60px; font-size:45px; color:#002b4e; text-transform: uppercase; letter-spacing: 2px; }
+        h2::after { content: ''; display: block; width: 100px; height: 5px; background: #00aaff; margin: 20px auto; border-radius: 3px; }
+
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:40px; }
+        
+        /* КАРТОЧКИ (Более выраженные) */
         .card { 
-            background: rgba(255, 255, 255, 0.8); 
-            backdrop-filter: blur(5px);
-            padding: 40px; border-radius: 15px; 
-            border: 1px solid rgba(255,255,255,0.4);
-            box-shadow: 0 10px 25px rgba(0,43,78,0.07); 
+            background: white;
+            padding: 45px; border-radius: 18px; 
+            box-shadow: 0 12px 30px rgba(0,43,78,0.1); 
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             opacity: 0; transform: translateY(30px);
+            border: 1px solid #eee;
         }
         .card.visible { opacity: 1; transform: translateY(0); }
         .card:hover { 
-            transform: translateY(-12px); 
-            background: rgba(255, 255, 255, 1);
-            box-shadow: 0 20px 40px rgba(0,43,78,0.15); 
-            border-bottom: 5px solid #00aaff; 
+            transform: translateY(-15px); 
+            box-shadow: 0 25px 50px rgba(0,43,78,0.2); 
+            border-bottom: 6px solid #00aaff; 
         }
-        .card h3 { color: #002b4e; margin-bottom: 15px; font-size: 22px; border-left: 4px solid #00aaff; padding-left: 15px; }
+        .card h3 { color: #002b4e; margin-bottom: 18px; font-size: 24px; border-left: 5px solid #00aaff; padding-left: 15px; }
+        .card p { color: #555; font-size: 16px; }
 
-        /* ЛОГИСТИКА */
-        .logistics { 
-            background: linear-gradient(rgba(0, 43, 78, 0.85), rgba(0, 43, 78, 0.85)), 
-                        url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover;
-            background-attachment: fixed;
-            color: white;
+        /* КОНТАКТЫ (Темное стекло) */
+        .contact { 
+            background: rgba(0, 26, 48, 0.9);
+            backdrop-filter: blur(10px);
+            color:white; text-align:center; 
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
-        .logistics h2 { color: white; }
-        .logistics .card { background: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
-        .logistics .card h3 { color: #00aaff; }
-
-        /* КОНТАКТЫ */
-        .contact { background:#001a30; color:white; text-align:center; }
-        form { max-width:700px; margin: 40px auto; display:grid; gap:15px; }
+        .contact h2 { color: white; }
+        form { max-width:750px; margin: 50px auto; display:grid; gap:20px; }
         input, textarea { 
-            padding:18px; border-radius:8px; border: 1px solid rgba(255,255,255,0.2); 
-            font-family: inherit; font-size: 16px; background: rgba(255,255,255,0.05); color: white;
+            padding:20px; border-radius:10px; border: 1px solid rgba(255,255,255,0.15); 
+            font-family: inherit; font-size: 16px; background: rgba(255,255,255,0.08); color: white;
+            transition: 0.3s;
         }
-        input::placeholder, textarea::placeholder { color: #aaa; }
-        input:focus, textarea:focus { outline: 2px solid #00aaff; background: rgba(255,255,255,0.1); }
+        input::placeholder, textarea::placeholder { color: #ccc; }
+        input:focus, textarea:focus { outline: none; border-color: #00aaff; background: rgba(255,255,255,0.15); box-shadow: 0 0 15px rgba(0,170,255,0.3); }
         
         button { 
-            padding:18px; border:none; background:#00aaff; color:white; 
-            font-weight:700; cursor:pointer; border-radius:8px; transition:0.3s; 
-            font-size: 18px; text-transform: uppercase; letter-spacing: 1px;
+            padding:20px; border:none; background:#00aaff; color:white; 
+            font-weight:700; cursor:pointer; border-radius:10px; transition:0.3s; 
+            font-size: 19px; text-transform: uppercase; letter-spacing: 1.5px;
+            box-shadow: 0 5px 15px rgba(0,170,255,0.3);
         }
-        button:hover { background:white; color:#002b4e; transform: scale(1.02); }
+        button:hover { background:white; color:#002b4e; transform: scale(1.03); box-shadow: 0 8px 25px rgba(255,255,255,0.2); }
 
-        .contact-info { margin-top:50px; font-size: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; }
-        .contact-info a { color:#00aaff; text-decoration:none; font-weight: 600; }
+        .contact-info { margin-top:60px; font-size: 22px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; }
+        .contact-info a { color:#00aaff; text-decoration:none; font-weight: 600; transition: 0.3s; }
+        .contact-info a:hover { color: white; text-shadow: 0 0 10px #00aaff; }
 
         /* ПОДВАЛ */
-        footer { text-align:center; padding:40px; background:#050a0f; color:#666; font-size: 14px; }
+        footer { text-align:center; padding:50px; background:#04070a; color:#888; font-size: 15px; position: relative; z-index: 2; }
 
+        /* АДАПТИВНОСТЬ */
         @media(max-width:768px){
-            .hero-content h1 { font-size: 42px; }
+            .hero-content h1 { font-size: 45px; letter-spacing: 2px; }
             .hero-content p { font-size: 18px; }
-            section { padding: 60px 5%; }
+            header { padding: 10px 5%; }
+            .logo-img { width: 220px; }
+            section { padding: 80px 5%; }
+            h2 { font-size: 32px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.jpg" alt="KmarinEOOD" class="logo-img">
+    <img src="logo.png" alt="KmarinEOOD" class="logo-img">
     <nav>
         <a href="#offer">Offer</a>
         <a href="#products">Products</a>
@@ -138,16 +145,13 @@
 </header>
 
 <section class="hero">
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-large-container-ship-sailing-at-sea-41214-large.mp4" type="video/mp4">
-    </video>
     <div class="hero-content">
         <h1>KmarinEOOD</h1>
         <p>Global Marine Technical Supply & Logistics</p>
     </div>
 </section>
 
-<div class="sea-bg">
+<div class="glass-section">
     <section id="offer">
         <h2>WHAT WE OFFER</h2>
         <div class="grid">
@@ -156,57 +160,59 @@
             <div class="card"><h3>Fast Response</h3><p>Immediate response to technical inquiries and accurate spare parts identification.</p></div>
         </div>
     </section>
+</div>
 
-    <section id="products">
-        <h2>OUR PRODUCTS</h2>
+<section id="products">
+    <h2>OUR PRODUCTS</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Main & Aux Engines</h3>
+            <p>Specialized in spare parts for <strong>MAN B&W 6S42MC7</strong> and <strong>5L16/24</strong>. Full support for Wärtsilä, Yanmar, and Mitsubishi.</p>
+        </div>
+        <div class="card">
+            <h3>Critical Spares</h3>
+            <p>High-quality <strong>Piston Crowns</strong>, <strong>Fuel Nozzles</strong>, cylinder liners, and bearings for marine diesel engines.</p>
+        </div>
+        <div class="card">
+            <h3>Pumps & Purifiers</h3>
+            <p>Spares for Alfa Laval, Westfalia oil purifiers and all types of marine engine room pumps.</p>
+        </div>
+        <div class="card">
+            <h3>Air Compressors</h3>
+            <p>Maintenance kits and valves for Sperre, Sauer & Sohn, and Tanabe compressors.</p>
+        </div>
+        <div class="card">
+            <h3>Automation</h3>
+            <p>Electrical components, sensors, and control modules for engine management systems.</p>
+        </div>
+        <div class="card">
+            <h3>Deck Machinery</h3>
+            <p>Hydraulic parts, mooring winch spares, and crane components.</p>
+        </div>
+    </div>
+</section>
+
+<div class="glass-section">
+    <section id="logistics">
+        <h2>GLOBAL LOGISTICS</h2>
         <div class="grid">
-            <div class="card">
-                <h3>Main & Aux Engines</h3>
-                <p>Specialized in spare parts for <strong>MAN B&W 6S42MC7</strong> and <strong>5L16/24</strong>. Full support for Wärtsilä, Yanmar, and Mitsubishi.</p>
-            </div>
-            <div class="card">
-                <h3>Critical Spares</h3>
-                <p>High-quality <strong>Piston Crowns</strong>, <strong>Fuel Nozzles</strong>, cylinder liners, and bearings for marine diesel engines.</p>
-            </div>
-            <div class="card">
-                <h3>Pumps & Purifiers</h3>
-                <p>Spares for Alfa Laval, Westfalia oil purifiers and all types of marine engine room pumps.</p>
-            </div>
-            <div class="card">
-                <h3>Air Compressors</h3>
-                <p>Maintenance kits and valves for Sperre, Sauer & Sohn, and Tanabe compressors.</p>
-            </div>
-            <div class="card">
-                <h3>Automation</h3>
-                <p>Electrical components, sensors, and control modules for engine management systems.</p>
-            </div>
-            <div class="card">
-                <h3>Deck Machinery</h3>
-                <p>Hydraulic parts, mooring winch spares, and crane components.</p>
-            </div>
+            <div class="card"><h3>Express Delivery</h3><p>Urgent air freight for critical spare parts via DHL, FedEx, and UPS.</p></div>
+            <div class="card"><h3>Shipyard Support</h3><p>Consolidated shipments and direct delivery to major shipyards worldwide.</p></div>
+            <div class="card"><h3>Marine Logistics</h3><p>Reliable door-to-deck delivery service in all major international ports.</p></div>
         </div>
     </section>
 </div>
 
-<section id="logistics" class="logistics">
-    <h2>GLOBAL LOGISTICS</h2>
-    <div class="grid">
-        <div class="card"><h3>Express Delivery</h3><p>Urgent air freight for critical spare parts via DHL, FedEx, and UPS.</p></div>
-        <div class="card"><h3>Shipyard Support</h3><p>Consolidated shipments and direct delivery to major shipyards worldwide.</p></div>
-        <div class="card"><h3>Marine Logistics</h3><p>Reliable door-to-deck delivery service in all major international ports.</p></div>
-    </div>
-</section>
-
 <section id="contact" class="contact">
     <h2>SEND YOUR INQUIRY</h2>
-    <div class="success" id="success">
+    <div class="success" id="success" style="display:none; padding: 20px; background: rgba(0,170,255,0.2); border-radius: 10px; margin-bottom: 30px; border: 1px solid #00aaff; color: #00aaff; font-weight: 600;">
         <strong>Thank you!</strong> Your inquiry has been sent successfully. We will contact you shortly.
     </div>
     <form id="form" action="https://formspree.io/f/mjgavall" method="POST">
         <input type="text" name="name" placeholder="Contact Person" required>
         <input type="email" name="email" placeholder="Your Email (e.g. name@company.com)" required>
         <input type="text" name="vessel" placeholder="Vessel Name / IMO Number">
-        <textarea name="message" rows="5" placeholder="List of required spare parts (Part Name, Maker, Type...)" required></textarea>
+        <textarea name="message" rows="6" placeholder="List of required spare parts (Part Name, Maker, Type...)" required></textarea>
         <button type="submit">SEND REQUEST</button>
     </form>
     <div class="contact-info">
@@ -220,6 +226,7 @@
 </footer>
 
 <script>
+    // Анимация появления карточек
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -232,12 +239,17 @@
         observer.observe(card);
     });
 
+    // Обработка формы
     const form = document.getElementById("form");
     const success = document.getElementById("success");
     form.addEventListener("submit", function(e){
         e.preventDefault();
         const btn = form.querySelector('button');
+        const originalBtnText = btn.textContent;
         btn.textContent = "SENDING...";
+        btn.style.opacity = "0.7";
+        btn.disabled = true;
+
         fetch(form.action, {
             method: form.method,
             body: new FormData(form),
@@ -246,8 +258,18 @@
             if(response.ok){
                 form.style.display="none";
                 success.style.display="block";
-                success.style.color = "#00aaff";
+                window.scrollTo(0, form.offsetTop - 150);
+            } else {
+                btn.textContent = originalBtnText;
+                btn.style.opacity = "1";
+                btn.disabled = false;
+                alert("Oops! There was a problem submitting your form.");
             }
+        }).catch(error => {
+            btn.textContent = originalBtnText;
+            btn.style.opacity = "1";
+            btn.disabled = false;
+            alert("Oops! There was a problem submitting your form.");
         });
     });
 </script>
