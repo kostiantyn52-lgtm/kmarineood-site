@@ -6,23 +6,26 @@
     <title>KmarinEOOD | Marine Technical Supply & Logistics</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* БАЗОВЫЕ СТИЛИ И ЕДИНЫЙ ЯРКИЙ ФОН */
+        /* БАЗОВЫЕ СТИЛИ */
         * { margin:0; padding:0; box-sizing:border-box; }
         body { 
             font-family:'Poppins', sans-serif; 
             color:#333; 
             line-height:1.6; 
             overflow-x: hidden;
-            /* ВАШЕ ИЗОБРАЖЕНИЕ: ПРОЯВЛЕННОЕ, ЯРКОЕ, НА ВЕСЬ ЭКРАН */
+            
+            /* ФОН 1: СУДНО В ПОРТУ (НА ВЕСЬ САЙТ) */
+            /* Используем auto, чтобы не приближать оригинальный масштаб */
             background-image: 
-                linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.6) 100%), /* Легкий градиент для читаемости */
-                url('https://images.unsplash.com/photo-1524522173746-f628baad3644?auto=format&fit=crop&q=80&w=2500');
-            background-attachment: fixed; /* Эффект параллакса при скролле */
-            background-size: cover;
+                linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
+                url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500');
+            background-attachment: fixed; /* Эффект параллакса */
+            background-size: auto; /* Оригинальный масштаб, без приближения */
             background-position: center;
+            background-color: #001a30; /* Страховочный цвет */
         }
 
-        /* ШАПКА САЙТА (Более насыщенный синий) */
+        /* ШАПКА САЙТА */
         header {
             position:fixed; top:0; width:100%; z-index:1000;
             background: rgba(0, 32, 63, 0.9); 
@@ -36,17 +39,16 @@
         header nav a { color:white; text-decoration:none; margin-left:30px; font-weight:500; transition:0.3s; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
         header nav a:hover { color:#00aaff; }
 
-        /* ГЛАВНЫЙ ЭКРАН (Теперь поверх фото) */
+        /* ГЛАВНЫЙ ЭКРАН (Поверх Фон 1) */
         .hero {
             height:100vh; display:flex; align-items:center; 
             justify-content:center; text-align:center; color:white; 
-            /* Дополнительное легкое затемнение ТОЛЬКО в этой зоне для супер-читаемости заголовка */
-            background: rgba(0,0,0,0.2); 
+            background: rgba(0,0,0,0.2); /* Легкое затемнение для текста */
         }
         .hero-content h1 { 
             font-size: 80px; margin-bottom: 15px; letter-spacing: 5px; 
             text-transform: uppercase; 
-            text-shadow: 0 4px 15px rgba(0,0,0,0.6); /* Мощная тень для текста */
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
         .hero-content p { 
             font-size: 26px; font-weight: 300; opacity: 0.95; 
@@ -54,7 +56,7 @@
             text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
 
-        /* СТИЛИЗАЦИЯ СЕКЦИЙ (Эффект стекла) */
+        /* СТИЛИЗАЦИЯ СЕКЦИЙ */
         section { padding: 120px 10%; position: relative; z-index: 1; }
         
         /* Класс для создания светлых "стеклянных" блоков */
@@ -71,7 +73,7 @@
 
         .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:40px; }
         
-        /* КАРТОЧКИ (Более выраженные) */
+        /* КАРТОЧКИ */
         .card { 
             background: white;
             padding: 45px; border-radius: 18px; 
@@ -89,9 +91,22 @@
         .card h3 { color: #002b4e; margin-bottom: 18px; font-size: 24px; border-left: 5px solid #00aaff; padding-left: 15px; }
         .card p { color: #555; font-size: 16px; }
 
-        /* КОНТАКТЫ (Темное стекло) */
+        /* СПЕЦИАЛЬНЫЙ ФОН 2 ДЛЯ СЕКЦИИ ПРОДУКТОВ */
+        #products {
+            /* Используем auto, чтобы не приближать оригинальный масштаб */
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+                url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2500');
+            background-size: auto; /* Оригинальный масштаб, без приближения */
+            background-position: center;
+            background-attachment: fixed; /* Параллакс */
+            border-top: 1px solid rgba(255,255,255,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* КОНТАКТЫ */
         .contact { 
-            background: rgba(0, 26, 48, 0.9);
+            background: rgba(0, 26, 48, 0.95);
             backdrop-filter: blur(10px);
             color:white; text-align:center; 
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -129,13 +144,14 @@
             .logo-img { width: 220px; }
             section { padding: 80px 5%; }
             h2 { font-size: 32px; }
+            body, #products { background-size: cover; } /* На мобильных cover лучше, т.к. auto ломает верстку */
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.jpg" alt="KmarinEOOD" class="logo-img">
+    <img src="logo.png" alt="KmarinEOOD" class="logo-img">
     <nav>
         <a href="#offer">Offer</a>
         <a href="#products">Products</a>
