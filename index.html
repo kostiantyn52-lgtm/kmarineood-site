@@ -4,17 +4,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KmarinEOOD | Marine Technical Supply & Logistics</title>
+<title>KmarinEOOD | Global Marine Solutions</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
 --primary:#002b4e;
---accent:#005a8d;
---text:#333;
+--accent:#0077b6;
 --light:#f4f7f9;
+--text:#222;
 }
 
 *{
@@ -24,48 +24,49 @@ box-sizing:border-box;
 }
 
 body{
-font-family:'Poppins',sans-serif;
+font-family:'Montserrat',sans-serif;
 color:var(--text);
 line-height:1.6;
 background:#fff;
 }
 
-/* NAVIGATION */
+/* HEADER */
 
-nav{
-padding:30px 5%;
+header{
+background:#fff;
+padding:25px 6%;
 display:flex;
 flex-direction:column;
 align-items:center;
-background:#fff;
+box-shadow:0 2px 12px rgba(0,0,0,0.05);
 position:sticky;
 top:0;
 z-index:1000;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-.logo img{
-height:150px;
-}
-
-.nav-links{
-margin-top:10px;
-font-weight:600;
+.logo{
+font-size:2rem;
+font-weight:700;
 color:var(--primary);
-text-transform:uppercase;
-font-size:0.9em;
 letter-spacing:1px;
-text-align:center;
+}
+
+.tagline{
+margin-top:6px;
+font-size:0.9rem;
+letter-spacing:2px;
+color:#555;
+text-transform:uppercase;
 }
 
 /* HERO */
 
 .hero{
-height:70vh;
+height:80vh;
 
 background:
-linear-gradient(rgba(0,43,78,0.6),rgba(0,43,78,0.6)),
-url('https://images.unsplash.com/photo-1524522173746-f628baad3644?auto=format&fit=crop&q=80&w=1920');
+linear-gradient(rgba(0,43,78,0.65),rgba(0,43,78,0.65)),
+url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1920&q=80");
 
 background-size:cover;
 background-position:center;
@@ -76,101 +77,134 @@ justify-content:center;
 
 text-align:center;
 color:#fff;
-padding:0 20px;
+padding:20px;
 }
 
-.hero-content h1{
-font-size:3.5em;
-font-weight:700;
-margin-bottom:10px;
+.hero h1{
+font-size:3.5rem;
+margin-bottom:20px;
 }
 
-.hero-content p{
-font-size:1.2em;
-font-weight:300;
+.hero p{
 max-width:700px;
-margin:0 auto 30px;
+margin:auto;
+font-weight:300;
+font-size:1.2rem;
+margin-bottom:35px;
+}
+
+.btn{
+display:inline-block;
+background:#fff;
+color:var(--primary);
+padding:14px 40px;
+text-decoration:none;
+font-weight:600;
+border-radius:4px;
+transition:0.3s;
+}
+
+.btn:hover{
+background:var(--accent);
+color:#fff;
 }
 
 /* SERVICES */
 
 .services{
-padding:80px 5%;
-text-align:center;
+padding:90px 6%;
 background:var(--light);
+text-align:center;
 }
 
 .section-title{
-margin-bottom:50px;
-}
-
-.section-title h2{
-font-size:2.2em;
-color:var(--primary);
+font-size:2.3rem;
 margin-bottom:15px;
+color:var(--primary);
 }
 
-.section-title .bar{
+.section-bar{
 width:60px;
 height:4px;
 background:var(--accent);
-margin:0 auto;
+margin:15px auto 60px auto;
 }
 
-.service-grid{
+.grid{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:35px;
 }
 
-.service-card{
+.card{
+
 background:#fff;
+
 padding:40px 30px;
-border-radius:10px;
+
+border-radius:8px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+
 transition:0.3s;
-box-shadow:0 5px 20px rgba(0,0,0,0.03);
 }
 
-.service-card:hover{
+.card:hover{
 transform:translateY(-10px);
-box-shadow:0 15px 30px rgba(0,0,0,0.1);
+box-shadow:0 18px 35px rgba(0,0,0,0.12);
 }
 
-.service-card h3{
-color:var(--primary);
+.card h3{
 margin-bottom:15px;
-font-size:1.4em;
+color:var(--primary);
 }
 
-.service-card p{
-font-size:0.95em;
-color:#666;
+.card p{
+font-size:0.95rem;
+color:#555;
 }
 
 /* ABOUT */
 
 .about{
-padding:80px 5%;
+
+padding:90px 6%;
+
 display:flex;
-align-items:center;
-gap:50px;
+
 flex-wrap:wrap;
+
+gap:60px;
+
+align-items:center;
 }
 
 .about-text{
 flex:1;
-min-width:300px;
+min-width:280px;
 }
 
 .about-text h2{
-color:var(--primary);
-font-size:2em;
+font-size:2rem;
 margin-bottom:20px;
+color:var(--primary);
 }
 
 .about-text p{
-margin-bottom:20px;
-font-size:1.05em;
+margin-bottom:18px;
+}
+
+.about-image{
+flex:1;
+min-width:280px;
+}
+
+.about-image img{
+width:100%;
+border-radius:8px;
 }
 
 /* CTA */
@@ -178,59 +212,48 @@ font-size:1.05em;
 .cta{
 background:var(--primary);
 color:#fff;
-padding:60px 5%;
+padding:70px 6%;
 text-align:center;
 }
 
 .cta h2{
-margin-bottom:25px;
-}
-
-.contact-btn{
-
-display:inline-block;
-
-background:#fff;
-color:var(--primary);
-
-padding:15px 40px;
-
-text-decoration:none;
-
-border-radius:5px;
-
-font-weight:700;
-
-text-transform:uppercase;
-
-transition:0.3s;
-}
-
-.contact-btn:hover{
-background:var(--accent);
-color:#fff;
+font-size:2rem;
+margin-bottom:30px;
 }
 
 /* FOOTER */
 
 footer{
-padding:40px 5%;
-background:#1a1a1a;
-color:#aaa;
-font-size:0.85em;
+background:#111;
+color:#bbb;
+padding:40px 6%;
 text-align:center;
+font-size:0.85rem;
+}
+
+/* ANIMATION */
+
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:all 0.8s ease;
+}
+
+.fade.visible{
+opacity:1;
+transform:translateY(0);
 }
 
 /* MOBILE */
 
-@media (max-width:768px){
+@media(max-width:768px){
 
-.hero-content h1{
-font-size:2.2em;
+.hero h1{
+font-size:2.3rem;
 }
 
-.nav-links{
-font-size:0.8em;
+.hero{
+height:70vh;
 }
 
 }
@@ -240,32 +263,26 @@ font-size:0.8em;
 
 <body>
 
-<nav>
+<header>
 
-<div class="logo">
-<img src="Logo 3.jpeg" alt="KmarinEOOD Logo">
-</div>
+<div class="logo">KmarinEOOD</div>
+<div class="tagline">Global Marine Solutions</div>
 
-<div class="nav-links">
-Global Marine Solutions
-</div>
-
-</nav>
+</header>
 
 
 <section class="hero">
 
-<div class="hero-content">
+<div>
 
-<h1>KmarinEOOD</h1>
+<h1>Marine Technical Supply</h1>
 
 <p>
-Comprehensive Marine Technical Supply & International Logistics for the Global Maritime Industry.
+Professional sourcing and global logistics for marine engine spare parts,
+technical equipment and vessel maintenance solutions.
 </p>
 
-<a href="mailto:purchase@kmarine.org" class="contact-btn">
-Request a Quote
-</a>
+<a class="btn" href="mailto:purchase@kmarine.org">Request a Quote</a>
 
 </div>
 
@@ -274,31 +291,44 @@ Request a Quote
 
 <section class="services">
 
-<div class="section-title">
-<h2>Our Expertise</h2>
-<div class="bar"></div>
-</div>
+<h2 class="section-title">Our Services</h2>
+<div class="section-bar"></div>
 
-<div class="service-grid">
+<div class="grid">
 
-<div class="service-card">
-<h3>Engine Spares</h3>
+<div class="card fade">
+<h3>Main & Aux Engine Spares</h3>
 <p>
-Specialized sourcing for MAN, STX, and CME-MAN engine components including pistons, nozzles, and valves.
+Supply of original and OEM components for MAN, Wärtsilä,
+CME-MAN and other marine engines including pistons,
+fuel valves, pumps and overhaul kits.
 </p>
 </div>
 
-<div class="service-card">
+<div class="card fade">
+<h3>Pumps & Machinery</h3>
+<p>
+Technical sourcing for centrifugal pumps,
+screw pumps, compressors,
+purifiers and marine auxiliary machinery.
+</p>
+</div>
+
+<div class="card fade">
 <h3>Electrical Equipment</h3>
 <p>
-Complete range of technical and electrical spares, including Schneider Electric automation and circuit breakers.
+Marine automation systems,
+Schneider Electric circuit breakers,
+control panels and electrical spare parts.
 </p>
 </div>
 
-<div class="service-card">
+<div class="card fade">
 <h3>Global Logistics</h3>
 <p>
-Expert international logistics ensuring rapid door-to-deck delivery of critical components worldwide.
+Fast international delivery by air freight,
+courier or sea transport with reliable
+door-to-deck logistics solutions.
 </p>
 </div>
 
@@ -309,17 +339,27 @@ Expert international logistics ensuring rapid door-to-deck delivery of critical 
 
 <section class="about">
 
-<div class="about-text">
+<div class="about-text fade">
 
-<h2>Professional Technical Supply</h2>
+<h2>Professional Marine Supply Partner</h2>
 
 <p>
-KmarinEOOD provides comprehensive marine technical supply and international logistics, specializing in the professional sourcing of high-quality technical spares.
+KmarinEOOD specializes in marine technical procurement,
+supplying high-quality spare parts and equipment
+to shipowners and fleet operators worldwide.
 </p>
 
 <p>
-We ensure that your fleet remains operational with minimum downtime by delivering reliable technical solutions and essential vessel equipment to any port globally.
+Our expertise covers engine components,
+technical equipment sourcing,
+and rapid logistics to any port globally.
 </p>
+
+</div>
+
+<div class="about-image fade">
+
+<img src="https://images.unsplash.com/photo-1566378801655-6c5e7c97e6c5?auto=format&fit=crop&w=1400&q=80">
 
 </div>
 
@@ -328,22 +368,49 @@ We ensure that your fleet remains operational with minimum downtime by deliverin
 
 <section class="cta">
 
-<h2>Ready to support your vessel 24/7</h2>
+<h2>Need urgent marine spare parts?</h2>
 
-<a href="mailto:purchase@kmarine.org" class="contact-btn">
-Contact Our Team
-</a>
+<a class="btn" href="mailto:purchase@kmarine.org">Contact Our Team</a>
 
 </section>
 
 
 <footer>
 
-<p>
-© 2026 KmarinEOOD. All rights reserved. | Marine Technical Supply & Logistics
-</p>
+© 2026 KmarinEOOD  
+Marine Technical Supply & Global Logistics
 
 </footer>
+
+
+<script>
+
+/* simple scroll animation */
+
+const elements=document.querySelectorAll(".fade");
+
+function reveal(){
+
+elements.forEach(el=>{
+
+const top=el.getBoundingClientRect().top;
+
+if(top<window.innerHeight-100){
+
+el.classList.add("visible");
+
+}
+
+});
+
+}
+
+window.addEventListener("scroll",reveal);
+
+reveal();
+
+</script>
+
 
 </body>
 </html>
