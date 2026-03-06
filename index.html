@@ -1,193 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KmarinEOOD | Marine Technical Supply & Logistics</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Poppins', sans-serif; color:#333; line-height:1.6; overflow-x: hidden; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KmarinEOOD | Marine Technical Supply & Logistics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #002b4e;
+            --accent: #005a8d;
+            --text: #333;
+            --light: #f4f7f9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: var(--text); line-height: 1.6; background: #fff; }
 
-/* ШАПКА */
-header {
-    position:fixed; top:0; width:100%; z-index:1000;
-    background: linear-gradient(90deg, #002b4e, #005a8d);
-    padding: 15px 10%;
-    display: flex; justify-content: space-between; align-items: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-}
-header .logo { color:white; font-weight:700; font-size:24px; text-decoration: none; }
-header nav a { color:white; text-decoration:none; margin-left:25px; font-weight:500; transition:0.3s; }
-header nav a:hover { color:#00aaff; }
+        /* Navigation */
+        nav { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: #fff; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        
+        /* Logo: Restrictions removed, set to natural size */
+        .logo img { height: auto; max-width: 100%; display: block; }
+        
+        .nav-links { font-weight: 600; color: var(--primary); text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; }
 
-/* ГЛАВНЫЙ ЭКРАН (HERO) - Стиль как на картинке */
-.hero {
-    position:relative; height:100vh; display:flex; align-items:center; justify-content:center; 
-    text-align:center; color:white;
-    background: linear-gradient(rgba(0,43,78,0.6), rgba(0,43,78,0.6)), 
-                url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=2000'); 
-    background-size: cover; background-position: center; overflow:hidden;
-}
-.hero-content { z-index: 10; padding: 0 20px; }
-.hero h1 { font-size: 72px; font-weight: 700; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 20px; }
-.hero p { font-size: 22px; max-width: 900px; margin: 0 auto 40px; font-weight: 300; }
+        /* Hero Section */
+        .hero { 
+            height: 70vh; 
+            background: linear-gradient(rgba(0,43,78,0.6), rgba(0,43,78,0.6)), url('https://images.unsplash.com/photo-1524522173746-f628baad3644?auto=format&fit=crop&q=80&w=1920'); 
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 0 20px;
+        }
+        
+        /* Elegant font for the Hero Title */
+        .hero-content h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic;
+            font-size: clamp(2.5em, 8vw, 4.5em); 
+            font-weight: 700; 
+            margin-bottom: 10px; 
+            letter-spacing: 1px;
+        }
+        
+        .hero-content p { font-size: 1.2em; font-weight: 300; max-width: 700px; margin: 0 auto 30px; }
 
-.cta-btn {
-    display: inline-block; padding: 18px 40px; background: white; color: #002b4e;
-    text-decoration: none; font-weight: 700; border-radius: 4px; text-transform: uppercase;
-    transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-.cta-btn:hover { background: #00aaff; color: white; transform: translateY(-3px); }
+        /* Services Section */
+        .services { padding: 80px 5%; text-align: center; background: var(--light); }
+        .section-title { margin-bottom: 50px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 2.5em; color: var(--primary); margin-bottom: 15px; }
+        .section-title .bar { width: 60px; height: 4px; background: var(--accent); margin: 0 auto; }
 
-/* Вертикальные линии (как на картинке) */
-.line {
-    position:absolute; width:1px; height:100%; background:rgba(255,255,255,0.2); 
-    z-index: 1; top: 0;
-}
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-card { background: #fff; padding: 40px 30px; border-radius: 10px; transition: 0.3s; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .service-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.4em; text-transform: uppercase; letter-spacing: 1px; }
+        .service-card p { font-size: 0.95em; color: #666; }
 
-/* Силуэт корабля снизу */
-.ship-silhouette {
-    position:absolute; bottom:0; left:50%; transform:translateX(-50%);
-    width:100%; height:150px; opacity:0.15; pointer-events:none; z-index: 2;
-}
+        /* About Section */
+        .about { padding: 80px 5%; display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .about-text { flex: 1; min-width: 300px; }
+        .about-text h2 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 2.2em; margin-bottom: 20px; }
+        .about-text p { margin-bottom: 20px; font-size: 1.05em; }
 
-/* СЕКЦИИ */
-section { padding: 100px 10%; }
-h2 { text-align:center; margin-bottom:50px; font-size:36px; color:#002b4e; text-transform: uppercase; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
-.card { 
-    background:white; padding:40px; border-radius:8px; 
-    box-shadow:0 8px 25px rgba(0,0,0,0.05); transition:0.3s; 
-    border-top: 4px solid transparent;
-}
-.card:hover { transform:translateY(-10px); border-top: 4px solid #00aaff; }
-.card h3 { color: #002b4e; margin-bottom: 15px; font-size: 20px; }
+        /* Contact CTA */
+        .cta { background: var(--primary); color: #fff; padding: 60px 5%; text-align: center; }
+        .cta h2 { font-family: 'Playfair Display', serif; font-size: 2em; margin-bottom: 25px; }
+        .contact-btn { 
+            display: inline-block; background: #fff; color: var(--primary); 
+            padding: 15px 40px; text-decoration: none; border-radius: 5px; 
+            font-weight: 700; text-transform: uppercase; transition: 0.3s; 
+        }
+        .contact-btn:hover { background: var(--accent); color: #fff; }
 
-/* ЛОГИСТИКА */
-.logistics { background:#f4f7fa; }
-
-/* КОНТАКТЫ */
-.contact { background:#002b4e; color:white; text-align:center; }
-form { max-width:600px; margin: 40px auto; display:grid; gap:15px; }
-input, textarea { padding:15px; border:none; border-radius:4px; font-family: inherit; }
-button { 
-    padding:16px; border:none; background:white; color:#002b4e; 
-    font-weight:700; cursor:pointer; transition:0.3s; text-transform: uppercase;
-}
-button:hover { background:#00aaff; color:white; }
-.success { display:none; margin-top:20px; font-weight: 600; color: #00aaff; }
-.contact-info { margin-top:40px; font-size: 18px; }
-.contact-info a { color:white; text-decoration: underline; }
-
-/* ПОДВАЛ */
-footer { text-align:center; padding:40px; background:#111; color:#777; font-size: 14px; }
-
-@media(max-width:768px){
-    .hero h1 { font-size: 36px; }
-    .hero p { font-size: 16px; }
-    header nav { display: none; }
-}
-</style>
+        /* Footer */
+        footer { padding: 40px 5%; background: #1a1a1a; color: #aaa; font-size: 0.85em; text-align: center; }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5em; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <a href="#" class="logo">KmarinEOOD</a>
     <nav>
-        <a href="#offer">Offer</a>
-        <a href="#products">Products</a>
-        <a href="#logistics">Logistics</a>
-        <a href="#contact">Contact</a>
+        <div class="logo">
+            <img src="Logo.jpg" alt="KmarinEOOD Logo">
+        </div>
+        <div class="nav-links">Global Marine Solutions</div>
     </nav>
-</header>
 
-<section class="hero">
-    <div class="line" style="left:20%;"></div>
-    <div class="line" style="left:50%;"></div>
-    <div class="line" style="left:80%;"></div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>KmarinEOOD</h1>
+            <p>Comprehensive Marine Technical Supply & International Logistics for the Global Maritime Industry.</p>
+            <a href="mailto:purchase@kmarine.org" class="contact-btn">Request a Quote</a>
+        </div>
+    </section>
 
-    <div class="hero-content">
-        <h1>KmarinEOOD</h1>
-        <p>Comprehensive Marine Technical Supply & International Logistics for the Global Maritime Industry.</p>
-        <a href="#contact" class="cta-btn">Request a Quote</a>
-    </div>
+    <section class="services">
+        <div class="section-title">
+            <h2>Our Expertise</h2>
+            <div class="bar"></div>
+        </div>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Engine Spares</h3>
+                <p>Specialized sourcing for MAN, STX, and CME-MAN engine components including pistons, nozzles, and valves.</p>
+            </div>
+            <div class="service-card">
+                <h3>Electrical Equipment</h3>
+                <p>Complete range of technical and electrical spares, including Schneider Electric automation and circuit breakers.</p>
+            </div>
+            <div class="service-card">
+                <h3>Global Logistics</h3>
+                <p>Expert international logistics ensuring rapid door-to-deck delivery of critical components worldwide.</p>
+            </div>
+        </div>
+    </section>
 
-    <svg class="ship-silhouette" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax meet">
-        <path d="M0,100 C150,0 1050,0 1200,100 L1200,200 L0,200 Z" fill="#ffffff"/>
-    </svg>
-</section>
+    <section class="about">
+        <div class="about-text">
+            <h2>Professional Technical Supply</h2>
+            <p>KmarinEOOD provides comprehensive marine technical supply and international logistics, specializing in the professional sourcing of high-quality technical spares.</p>
+            <p>We ensure that your fleet remains operational with minimum downtime by delivering reliable technical solutions and essential vessel equipment to any port globally.</p>
+        </div>
+    </section>
 
+    <section class="cta">
+        <h2>Ready to support your vessel 24/7</h2>
+        <a href="mailto:purchase@kmarine.org" class="contact-btn">Contact Our Team</a>
+    </section>
 
-<section id="offer">
-    <h2>WHAT WE OFFER</h2>
-    <div class="grid">
-        <div class="card"><h3>Ship Spare Parts</h3><p>Professional sourcing of marine spare parts for main engines, auxiliary engines, and onboard machinery.</p></div>
-        <div class="card"><h3>Technical Supply</h3><p>Supply of marine equipment and engineering components from trusted manufacturers.</p></div>
-        <div class="card"><h3>Fast Response</h3><p>Immediate response to technical inquiries and accurate spare parts identification.</p></div>
-        <div class="card"><h3>Reliable Service</h3><p>Professional cooperation with shipowners, managers, and superintendents worldwide.</p></div>
-    </div>
-</section>
+    <footer>
+        <p>&copy; 2026 KmarinEOOD. All rights reserved. | <a href="mailto:purchase@kmarine.org" style="color: #aaa; text-decoration: none;">purchase@kmarine.org</a></p>
+    </footer>
 
-<section id="products">
-    <h2>OUR PRODUCTS</h2>
-    <div class="grid">
-        <div class="card"><h3>Engines</h3><p>Spare parts for MAN B&W, Wärtsilä, Yanmar, Mitsubishi and more.</p></div>
-        <div class="card"><h3>Pumps</h3><p>Marine pumps and spare parts for engine room and cargo systems.</p></div>
-        <div class="card"><h3>Purifiers</h3><p>Critical spares for fuel oil and lubricating oil purifiers.</p></div>
-        <div class="card"><h3>Air Compressors</h3><p>Service kits and spares for major marine compressor brands.</p></div>
-        <div class="card"><h3>Electrical</h3><p>Circuit breakers, sensors, and automation modules.</p></div>
-        <div class="card"><h3>Deck Gear</h3><p>Various spare parts for deck machinery and mooring systems.</p></div>
-    </div>
-</section>
-
-<section id="logistics" class="logistics">
-    <h2>GLOBAL LOGISTICS</h2>
-    <div class="grid">
-        <div class="card"><h3>Air Freight</h3><p>Fast delivery of urgent spare parts worldwide.</p></div>
-        <div class="card"><h3>Sea Freight</h3><p>Cost-efficient transport for large shipments.</p></div>
-        <div class="card)<h3>Courier Express</h3><p>DHL / FedEx / UPS delivery for urgent requirements.</p></div>
-        <div class="card"><h3>Shipyard Delivery</h3><p>Direct delivery to shipyards and ports worldwide.</p></div>
-    </div>
-</section>
-
-<section id="contact" class="contact">
-    <h2>SEND YOUR INQUIRY</h2>
-    <form id="form" action="https://formspree.io/f/mjgavall" method="POST">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="company" placeholder="Company" required>
-        <textarea name="message" placeholder="Your request (Parts, Vessel, IMO...)" rows="5" required></textarea>
-        <button type="submit">Send Inquiry</button>
-    </form>
-    <div class="success" id="success">Inquiry sent successfully. We will contact you shortly.</div>
-    <div class="contact-info">
-        <p><strong>KmarinEOOD</strong></p>
-        <p>Email: <a href="mailto:purchase@kmarine.org">purchase@kmarine.org</a></p>
-        <p>Phone: +359 77 22 701</p>
-    </div>
-</section>
-
-<footer>© 2026 KmarinEOOD | Marine Technical Supply & Logistics</footer>
-
-<script>
-const form = document.getElementById("form");
-const success = document.getElementById("success");
-form.addEventListener("submit", function(e){
-    e.preventDefault();
-    const btn = form.querySelector('button');
-    btn.textContent = "SENDING...";
-    fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-    }).then(response => {
-        if(response.ok){
-            form.style.display="none";
-            success.style.display="block";
-        }
-    });
-});
-</script>
 </body>
 </html>
