@@ -19,28 +19,28 @@
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
                 url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500');
             background-attachment: fixed;
-            /* contain гарантирует, что картинка не приблизится и будет видна целиком */
             background-size: contain; 
             background-repeat: no-repeat;
             background-position: center;
-            background-color: #001a30; /* Фон, если картинка кончится */
+            background-color: #001a30;
         }
 
-        /* ШАПКА САЙТА */
+        /* ШАПКА САЙТА (Авто-высота под логотип) */
         header {
             position:fixed; top:0; width:100%; z-index:1000;
-            background: rgba(0, 32, 63, 0.95); /* Чуть плотнее, т.к. фоны стали ярче */
-            padding: 15px 8%;
+            background: rgba(0, 32, 63, 0.95); 
+            padding: 10px 8%; /* Уменьшили vertical padding, т.к. лого большое */
             display:flex; justify-content:space-between; align-items:center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        /* Используем Logo.jpg */
-        .logo-img { width: 280px; height: 65px; object-fit: contain; }
+        /* ЛОГОТИП: ВЫСОТА 150px, ширина авто */
+        .logo-img { height: 150px; width: auto; object-fit: contain; }
+
         header nav a { color:white; text-decoration:none; margin-left:30px; font-weight:500; transition:0.3s; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
         header nav a:hover { color:#00aaff; }
 
-        /* ГЛАВНЫЙ ЭКРАН (Поверх Фон 1) */
+        /* ГЛАВНЫЙ ЭКРАН */
         .hero {
             height:100vh; display:flex; align-items:center; 
             justify-content:center; text-align:center; color:white; 
@@ -60,9 +60,8 @@
         /* СТИЛИЗАЦИЯ СЕКЦИЙ */
         section { padding: 120px 10%; position: relative; z-index: 1; }
         
-        /* Класс для создания светлых блоков поверх фонов */
         .content-section {
-            background: rgba(255, 255, 255, 0.9); /* Плотный белый, без размытия */
+            background: rgba(255, 255, 255, 0.95); /* Чуть плотнее для надежности */
             border-top: 1px solid rgba(255,255,255,0.3);
             border-bottom: 1px solid rgba(255,255,255,0.3);
             box-shadow: 0 0 30px rgba(0,0,0,0.1);
@@ -91,25 +90,25 @@
         .card h3 { color: #002b4e; margin-bottom: 18px; font-size: 24px; border-left: 5px solid #00aaff; padding-left: 15px; }
         .card p { color: #555; font-size: 16px; }
 
-        /* СПЕЦИАЛЬНЫЙ ФОН 2 ДЛЯ СЕКЦИИ ПРОДУКТОВ (ОТДАЛЕННЫЙ, БЕЗ ЗАМЫЛИВАНИЯ) */
+        /* СПЕЦИАЛЬНЫЙ ФОН 2: ОРИГИНАЛ, БЕЗ ОТБЕЛИВАНИЯ */
         #products {
             background-image: 
-                /* Легкое наложение для контраста текста, но без замыливания оригинала */
-                linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
+                /* Убрали белый градиент полностью. Только чистое фото */
                 url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2500');
-            /* contain гарантирует оригинальный удаленный масштаб */
             background-size: contain; 
             background-repeat: no-repeat;
             background-position: center;
             background-attachment: fixed;
             border-top: 1px solid rgba(255,255,255,0.3);
             border-bottom: 1px solid rgba(255,255,255,0.3);
-            background-color: #f4f7fa; /* Фон, если картинка кончится */
+            /* Т.к. фото темное, временно меняем цвет текста заголовка для этой секции */
+            background-color: #050a0f; 
         }
+        #products h2 { color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
         /* КОНТАКТЫ */
         .contact { 
-            background: rgba(0, 26, 48, 0.98); /* Почти непрозрачный */
+            background: rgba(0, 26, 48, 0.98);
             color:white; text-align:center; 
             border-top: 1px solid rgba(255,255,255,0.1);
         }
@@ -142,11 +141,12 @@
         @media(max-width:768px){
             .hero-content h1 { font-size: 45px; letter-spacing: 2px; }
             .hero-content p { font-size: 18px; }
-            header { padding: 10px 5%; }
-            .logo-img { width: 220px; }
+            header { padding: 10px 5%; flex-direction: column; } /* На мобильных меню под лого */
+            .logo-img { height: 100px; margin-bottom: 10px; } /* Чуть меньше на мобильных */
+            header nav { display: flex; flex-wrap: wrap; justify-content: center; }
+            header nav a { margin: 5px 10px; font-size: 13px; }
             section { padding: 80px 5%; }
             h2 { font-size: 32px; }
-            /* На мобильных contain может быть слишком мелким, возвращаем cover */
             body, #products { background-size: cover; background-attachment: scroll; } 
         }
     </style>
@@ -245,7 +245,6 @@
 </footer>
 
 <script>
-    // Анимация появления карточек
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -258,7 +257,6 @@
         observer.observe(card);
     });
 
-    // Обработка формы
     const form = document.getElementById("form");
     const success = document.getElementById("success");
     form.addEventListener("submit", function(e){
@@ -277,7 +275,7 @@
             if(response.ok){
                 form.style.display="none";
                 success.style.display="block";
-                window.scrollTo(0, form.offsetTop - 150);
+                window.scrollTo(0, form.offsetTop - 200); /* Скролл чуть выше с учетом большой шапки */
             } else {
                 btn.textContent = originalBtnText;
                 btn.style.opacity = "1";
