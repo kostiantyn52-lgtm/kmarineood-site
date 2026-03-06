@@ -22,7 +22,7 @@ justify-content:space-between;
 align-items:center;
 box-shadow:0 3px 10px rgba(0,0,0,0.2);
 }
-header .logo{color:white;font-weight:700;font-size:24px;}
+header .logo img{height:50px;}
 header nav a{color:white;text-decoration:none;margin-left:25px;font-weight:500;transition:0.3s;}
 header nav a:hover{ color:#00aaff; }
 
@@ -53,6 +53,8 @@ button{padding:14px;border:none;background:white;color:#002b4e;font-weight:600;c
 button:hover{background:#00aaff;color:white;}
 .success{display:none;margin-top:20px;}
 .contact-info{margin-top:40px;}
+.contact-info a{color:#00aaff;text-decoration:none;}
+.contact-info a:hover{text-decoration:underline;}
 
 /* FOOTER */
 footer{text-align:center;padding:30px;background:#111;color:#aaa;}
@@ -62,7 +64,9 @@ footer{text-align:center;padding:30px;background:#111;color:#aaa;}
 <body>
 
 <header>
-<div class="logo">KmarinEOOD</div>
+<div class="logo">
+<img src="https://images.unsplash.com/photo-1546443046-ed1ce6ffd2a6?auto=format&fit=crop&w=100&q=80" alt="KmarinEOOD Ship Logo">
+</div>
 <nav>
 <a href="#offer">Offer</a>
 <a href="#products">Products</a>
@@ -133,7 +137,7 @@ Inquiry sent successfully. We will contact you shortly.
 
 <div class="contact-info">
 <p><strong>KmarinEOOD</strong></p>
-<p>Email: purchase@kmarine.org</p>
+<p>Email: <a href="mailto:purchase@kmarine.org">purchase@kmarine.org</a></p>
 <p>Phone: +359 77 22 701</p>
 </div>
 </section>
