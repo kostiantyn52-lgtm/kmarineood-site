@@ -14,27 +14,28 @@
             line-height:1.6; 
             overflow-x: hidden;
             
-            /* ФОН 1: СУДНО В ПОРТУ (НА ВЕСЬ САЙТ) */
-            /* Используем auto, чтобы не приближать оригинальный масштаб */
+            /* ФОН 1: СУДНО В ПОРТУ (ОТДАЛЕННОЕ) */
             background-image: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
                 url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500');
-            background-attachment: fixed; /* Эффект параллакса */
-            background-size: auto; /* Оригинальный масштаб, без приближения */
+            background-attachment: fixed;
+            /* contain гарантирует, что картинка не приблизится и будет видна целиком */
+            background-size: contain; 
+            background-repeat: no-repeat;
             background-position: center;
-            background-color: #001a30; /* Страховочный цвет */
+            background-color: #001a30; /* Фон, если картинка кончится */
         }
 
         /* ШАПКА САЙТА */
         header {
             position:fixed; top:0; width:100%; z-index:1000;
-            background: rgba(0, 32, 63, 0.9); 
-            backdrop-filter: blur(12px);
+            background: rgba(0, 32, 63, 0.95); /* Чуть плотнее, т.к. фоны стали ярче */
             padding: 15px 8%;
             display:flex; justify-content:space-between; align-items:center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+        /* Используем Logo.jpg */
         .logo-img { width: 280px; height: 65px; object-fit: contain; }
         header nav a { color:white; text-decoration:none; margin-left:30px; font-weight:500; transition:0.3s; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
         header nav a:hover { color:#00aaff; }
@@ -43,7 +44,7 @@
         .hero {
             height:100vh; display:flex; align-items:center; 
             justify-content:center; text-align:center; color:white; 
-            background: rgba(0,0,0,0.2); /* Легкое затемнение для текста */
+            background: rgba(0,0,0,0.2); 
         }
         .hero-content h1 { 
             font-size: 80px; margin-bottom: 15px; letter-spacing: 5px; 
@@ -59,10 +60,9 @@
         /* СТИЛИЗАЦИЯ СЕКЦИЙ */
         section { padding: 120px 10%; position: relative; z-index: 1; }
         
-        /* Класс для создания светлых "стеклянных" блоков */
-        .glass-section {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
+        /* Класс для создания светлых блоков поверх фонов */
+        .content-section {
+            background: rgba(255, 255, 255, 0.9); /* Плотный белый, без размытия */
             border-top: 1px solid rgba(255,255,255,0.3);
             border-bottom: 1px solid rgba(255,255,255,0.3);
             box-shadow: 0 0 30px rgba(0,0,0,0.1);
@@ -91,23 +91,25 @@
         .card h3 { color: #002b4e; margin-bottom: 18px; font-size: 24px; border-left: 5px solid #00aaff; padding-left: 15px; }
         .card p { color: #555; font-size: 16px; }
 
-        /* СПЕЦИАЛЬНЫЙ ФОН 2 ДЛЯ СЕКЦИИ ПРОДУКТОВ */
+        /* СПЕЦИАЛЬНЫЙ ФОН 2 ДЛЯ СЕКЦИИ ПРОДУКТОВ (ОТДАЛЕННЫЙ, БЕЗ ЗАМЫЛИВАНИЯ) */
         #products {
-            /* Используем auto, чтобы не приближать оригинальный масштаб */
             background-image: 
-                linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+                /* Легкое наложение для контраста текста, но без замыливания оригинала */
+                linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
                 url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2500');
-            background-size: auto; /* Оригинальный масштаб, без приближения */
+            /* contain гарантирует оригинальный удаленный масштаб */
+            background-size: contain; 
+            background-repeat: no-repeat;
             background-position: center;
-            background-attachment: fixed; /* Параллакс */
+            background-attachment: fixed;
             border-top: 1px solid rgba(255,255,255,0.3);
             border-bottom: 1px solid rgba(255,255,255,0.3);
+            background-color: #f4f7fa; /* Фон, если картинка кончится */
         }
 
         /* КОНТАКТЫ */
         .contact { 
-            background: rgba(0, 26, 48, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 26, 48, 0.98); /* Почти непрозрачный */
             color:white; text-align:center; 
             border-top: 1px solid rgba(255,255,255,0.1);
         }
@@ -144,14 +146,15 @@
             .logo-img { width: 220px; }
             section { padding: 80px 5%; }
             h2 { font-size: 32px; }
-            body, #products { background-size: cover; } /* На мобильных cover лучше, т.к. auto ломает верстку */
+            /* На мобильных contain может быть слишком мелким, возвращаем cover */
+            body, #products { background-size: cover; background-attachment: scroll; } 
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.png" alt="KmarinEOOD" class="logo-img">
+    <img src="Logo.jpg" alt="KmarinEOOD" class="logo-img">
     <nav>
         <a href="#offer">Offer</a>
         <a href="#products">Products</a>
@@ -167,7 +170,7 @@
     </div>
 </section>
 
-<div class="glass-section">
+<div class="content-section">
     <section id="offer">
         <h2>WHAT WE OFFER</h2>
         <div class="grid">
@@ -208,7 +211,7 @@
     </div>
 </section>
 
-<div class="glass-section">
+<div class="content-section">
     <section id="logistics">
         <h2>GLOBAL LOGISTICS</h2>
         <div class="grid">
