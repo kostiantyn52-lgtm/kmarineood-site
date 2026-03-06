@@ -7,62 +7,111 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #002b4e; /* Темно-синий, как у TeamMar */
+            --primary: #002b4e; 
             --accent: #005a8d;
             --text: #333;
             --light: #f4f7f9;
         }
-        * { margin: 0; padding: 0; box-box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; color: var(--text); line-height: 1.6; background: #fff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: var(--text); line-height: 1.6; background: #fff; overflow-x: hidden; }
 
         /* Navigation */
-        nav { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: #fff; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo img { height: 50px; }
+        nav { 
+            padding: 15px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: #fff; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+        .logo img { height: 60px; object-fit: contain; }
         .nav-links { font-weight: 600; color: var(--primary); text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; }
 
-        /* Hero Section */
+        /* Hero Section with Ship Image */
         .hero { 
-            height: 70vh; 
-            background: linear-gradient(rgba(0,43,78,0.6), rgba(0,43,78,0.6)), url('https://images.unsplash.com/photo-1524522173746-f628baad3644?auto=format&fit=crop&q=80&w=1920'); 
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 0 20px;
+            position: relative;
+            height: 85vh; 
+            background: linear-gradient(rgba(0,43,78,0.5), rgba(0,43,78,0.5)), 
+                        url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=2000'); 
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed; /* Эффект параллакса */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: #fff; 
+            padding: 0 20px;
         }
-        .hero-content h1 { font-size: 3.5em; font-weight: 700; margin-bottom: 10px; }
-        .hero-content p { font-size: 1.2em; font-weight: 300; max-width: 700px; margin: 0 auto 30px; }
+        .hero-content { z-index: 2; margin-bottom: 50px; }
+        .hero-content h1 { font-size: 4em; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero-content p { font-size: 1.3em; font-weight: 300; max-width: 800px; margin: 0 auto 30px; }
+
+        /* Тот самый элемент судна (силуэт/переход) */
+        .hero-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            z-index: 3;
+        }
 
         /* Services Section */
-        .services { padding: 80px 5%; text-align: center; background: var(--light); }
+        .services { padding: 100px 5% 80px; text-align: center; background: #fff; position: relative; }
         .section-title { margin-bottom: 50px; }
-        .section-title h2 { font-size: 2.2em; color: var(--primary); margin-bottom: 15px; }
-        .section-title .bar { width: 60px; height: 4px; background: var(--accent); margin: 0 auto; }
+        .section-title h2 { font-size: 2.5em; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; }
+        .section-title .bar { width: 80px; height: 5px; background: var(--accent); margin: 0 auto; }
 
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .service-card { background: #fff; padding: 40px 30px; border-radius: 10px; transition: 0.3s; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .service-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.4em; }
-        .service-card p { font-size: 0.95em; color: #666; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .service-card { 
+            background: var(--light); 
+            padding: 50px 35px; 
+            border-radius: 12px; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            border: 1px solid #e1e8ed;
+        }
+        .service-card:hover { transform: translateY(-12px); background: #fff; box-shadow: 0 20px 40px rgba(0,43,78,0.1); border-color: var(--accent); }
+        .service-card h3 { color: var(--primary); margin-bottom: 20px; font-size: 1.5em; }
+        .service-card p { font-size: 1em; color: #555; }
 
         /* About Section */
-        .about { padding: 80px 5%; display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
-        .about-text { flex: 1; min-width: 300px; }
-        .about-text h2 { color: var(--primary); font-size: 2em; margin-bottom: 20px; }
-        .about-text p { margin-bottom: 20px; font-size: 1.05em; }
+        .about { padding: 80px 5%; display: flex; align-items: center; gap: 60px; flex-wrap: wrap; background: #fff; }
+        .about-text { flex: 1; min-width: 320px; }
+        .about-text h2 { color: var(--primary); font-size: 2.2em; margin-bottom: 25px; text-transform: uppercase; }
+        .about-text p { margin-bottom: 20px; font-size: 1.1em; color: #444; }
 
         /* Contact CTA */
-        .cta { background: var(--primary); color: #fff; padding: 60px 5%; text-align: center; }
-        .cta h2 { margin-bottom: 25px; }
-        .contact-btn { 
-            display: inline-block; background: #fff; color: var(--primary); 
-            padding: 15px 40px; text-decoration: none; border-radius: 5px; 
-            font-weight: 700; text-transform: uppercase; transition: 0.3s; 
+        .cta { 
+            background: linear-gradient(45deg, var(--primary), var(--accent)); 
+            color: #fff; 
+            padding: 80px 5%; 
+            text-align: center; 
         }
-        .contact-btn:hover { background: var(--accent); color: #fff; }
+        .cta h2 { font-size: 2.2em; margin-bottom: 30px; }
+        .contact-btn { 
+            display: inline-block; 
+            background: #fff; 
+            color: var(--primary); 
+            padding: 18px 45px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            transition: 0.3s; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .contact-btn:hover { background: var(--primary); color: #fff; transform: scale(1.05); }
 
         /* Footer */
-        footer { padding: 40px 5%; background: #1a1a1a; color: #aaa; font-size: 0.85em; text-align: center; }
+        footer { padding: 50px 5%; background: #0a1118; color: #7f8c8d; font-size: 0.9em; text-align: center; border-top: 1px solid #1c2833; }
         
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2em; }
+            .hero-content h1 { font-size: 2.5em; }
+            .hero { height: 60vh; }
             .nav-links { display: none; }
         }
     </style>
@@ -73,54 +122,80 @@
         <div class="logo">
             <img src="Logo.jpg" alt="KmarinEOOD Logo">
         </div>
-        <div class="nav-links">Global Marine Solutions</div>
+        <div class="nav-links">Global Marine Technical Supply</div>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
             <h1>KmarinEOOD</h1>
-            <p>Comprehensive Marine Technical Supply & International Logistics for the Global Maritime Industry.</p>
-            <a href="mailto:RFQ@kmarine.org" class="contact-btn">Request a Quote</a>
+            <p>Reliable Spare Parts & Professional Logistics for Merchant Fleets Worldwide.</p>
+            <a href="mailto:purchase@kmarine.org" class="contact-btn">Request a Quote</a>
         </div>
+
+        <svg class="hero-wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#ffffff" fill-opacity="1" d="M0,224L120,202.7C240,181,480,139,720,138.7C960,139,1200,181,1320,202.7L1440,224L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+        </svg>
     </section>
+
+    
 
     <section class="services">
         <div class="section-title">
-            <h2>Our Expertise</h2>
+            <h2>Technical Expertise</h2>
             <div class="bar"></div>
         </div>
         <div class="service-grid">
             <div class="service-card">
                 <h3>Engine Spares</h3>
-                <p>Specialized sourcing for MAN, STX, and CME-MAN engine components including pistons, nozzles, and valves.</p>
+                <p>Specialized sourcing for <strong>MAN 6S42MC7</strong>, STX, and <strong>CME-MAN 5L16/24</strong> engine components including piston crowns and fuel nozzles.</p>
             </div>
             <div class="service-card">
-                <h3>Electrical Equipment</h3>
-                <p>Complete range of technical and electrical spares, including Schneider Electric automation and circuit breakers.</p>
+                <h3>Purifiers & Pumps</h3>
+                <p>Maintenance kits and spare parts for Alfa Laval, Westfalia oil purifiers and all types of engine room pumps.</p>
             </div>
             <div class="service-card">
                 <h3>Global Logistics</h3>
-                <p>Expert international logistics ensuring rapid door-to-deck delivery of critical components worldwide.</p>
+                <p>Strategic door-to-deck delivery service. We handle customs and express freight to all major international ports 24/7.</p>
             </div>
         </div>
     </section>
 
     <section class="about">
         <div class="about-text">
-            <h2>Professional Technical Supply</h2>
-            <p>KmarinEOOD provides comprehensive marine technical supply and international logistics, specializing in the professional sourcing of high-quality technical spares.</p>
-            <p>We ensure that your fleet remains operational with minimum downtime by delivering reliable technical solutions and essential vessel equipment to any port globally.</p>
+            <h2>Professional Marine Solutions</h2>
+            <p>KmarinEOOD is a leading technical supplier dedicated to providing high-quality engine components and technical stores to the global maritime industry.</p>
+            <p>By leveraging our extensive network of manufacturers and optimized logistics, we ensure your vessel remains operational with minimal downtime, no matter where it is located.</p>
         </div>
     </section>
 
     <section class="cta">
-        <h2>Ready to support your vessel 24/7</h2>
-        <a href="mailto:RFQ@kmarine.org" class="contact-btn">Contact Our Team</a>
+        <h2>Ready to handle your technical inquiry</h2>
+        <a href="mailto:purchase@kmarine.org" class="contact-btn">Send RFQ Now</a>
     </section>
 
     <footer>
-        <p>&copy; 2026 KmarinEOOD. All rights reserved. | Marine Technical Supply & Logistics</p>
+        <p>&copy; 2026 KmarinEOOD. All rights reserved. <br> 
+        Professional Marine Technical Supply & International Logistics Services</p>
     </footer>
+
+    <script>
+        // Плавное появление карточек при скролле (как на teammar.kr)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(30px)";
+            card.style.transition = "all 0.6s ease-out";
+            observer.observe(card);
+        });
+    </script>
 
 </body>
 </html>
