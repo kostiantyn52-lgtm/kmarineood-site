@@ -6,15 +6,15 @@
     <title>KmarinEOOD | Marine Technical Supply & Logistics</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Базовые стили [cite: 1, 2] */
+        /* Базовые стили */
         * { margin:0; padding:0; box-sizing:border-box; }
         body { font-family:'Poppins', sans-serif; color:#333; line-height:1.6; overflow-x: hidden; }
 
-        /* ШАПКА САЙТА [cite: 3] */
+        /* ШАПКА САЙТА */
         header {
             position:fixed; top:0; width:100%; z-index:1000;
-            background: rgba(0, 43, 78, 0.95); /* Полупрозрачный синий */
-            backdrop-filter: blur(10px); /* Эффект размытия стекла */
+            background: rgba(0, 43, 78, 0.95);
+            backdrop-filter: blur(10px);
             padding: 10px 8%;
             display:flex; justify-content:space-between; align-items:center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -23,7 +23,7 @@
         header nav a { color:white; text-decoration:none; margin-left:25px; font-weight:500; transition:0.3s; }
         header nav a:hover { color:#00aaff; }
 
-        /* ГЛАВНЫЙ ЭКРАН С ВИДЕО [cite: 4] */
+        /* ГЛАВНЫЙ ЭКРАН С ВИДЕО И КОРАБЛЕМ */
         .hero {
             position:relative; height:100vh; display:flex; align-items:center; 
             justify-content:center; text-align:center; color:white; overflow:hidden;
@@ -31,32 +31,39 @@
         .hero-video {
             position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
             width: auto; height: auto; transform: translate(-50%, -50%);
-            z-index: -1; filter: brightness(0.5); /* Затемнение видео для читаемости текста */
+            z-index: -1; filter: brightness(0.4); 
         }
+        .hero-content { z-index: 2; }
         .hero-content h1 { font-size: 70px; margin-bottom: 10px; letter-spacing: 2px; text-transform: uppercase; }
         .hero-content p { font-size: 22px; font-weight: 300; opacity: 0.9; }
 
-        /* СЕКЦИИ [cite: 5] */
+        /* Силуэт корабля */
+        .ship-silhouette {
+            position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 100%; height: 200px; opacity: 0.2; pointer-events: none; z-index: 1;
+        }
+
+        /* СЕКЦИИ */
         section { padding: 100px 10%; }
         h2 { text-align:center; margin-bottom:50px; font-size:42px; color:#002b4e; position: relative; }
         h2::after { content: ''; display: block; width: 60px; height: 4px; background: #00aaff; margin: 15px auto; }
 
         .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
         
-        /* КАРТОЧКИ С ЭФФЕКТОМ ПОЯВЛЕНИЯ */
+        /* КАРТОЧКИ С АНИМАЦИЕЙ */
         .card { 
             background:white; padding:40px; border-radius:12px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s ease;
-            opacity: 0; transform: translateY(30px); /* Начальное состояние для анимации */
+            opacity: 0; transform: translateY(30px);
         }
         .card.visible { opacity: 1; transform: translateY(0); }
         .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); border-bottom: 4px solid #00aaff; }
         .card h3 { color: #002b4e; margin-bottom: 15px; font-size: 22px; }
 
-        /* ЛОГИСТИКА [cite: 6] */
+        /* ЛОГИСТИКА */
         .logistics { background:#f4f7fa; }
 
-        /* КОНТАКТЫ [cite: 7] */
+        /* КОНТАКТЫ */
         .contact { background:#002b4e; color:white; text-align:center; }
         form { max-width:600px; margin: 40px auto; display:grid; gap:15px; }
         input, textarea { padding:15px; border-radius:6px; border:none; font-family: inherit; font-size: 16px; }
@@ -69,21 +76,20 @@
         .contact-info { margin-top:50px; font-size: 18px; }
         .contact-info a { color:#00aaff; text-decoration:none; font-weight: 600; }
 
-        /* ПОДВАЛ [cite: 8] */
+        /* ПОДВАЛ */
         footer { text-align:center; padding:40px; background:#0b1622; color:#777; font-size: 14px; }
 
-        /* АДАПТИВНОСТЬ */
         @media(max-width:768px){
             .hero-content h1 { font-size: 40px; }
             .logo-img { width: 220px; }
-            header nav { display: none; } /* Скрываем меню на мобилках для простоты */
+            header nav { display: none; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.jpg" alt="KmarinEOOD" class="logo-img">
+    <img src="Logo.jpg" alt="KmarinEOOD" class="logo-img">
     <nav>
         <a href="#offer">Offer</a>
         <a href="#products">Products</a>
@@ -96,10 +102,15 @@
     <video autoplay muted loop playsinline class="hero-video">
         <source src="https://assets.mixkit.co/videos/preview/mixkit-large-container-ship-sailing-at-sea-41214-large.mp4" type="video/mp4">
     </video>
+    
     <div class="hero-content">
         <h1>KmarinEOOD</h1>
         <p>Global Marine Technical Supply & Logistics</p>
     </div>
+
+    <svg class="ship-silhouette" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax meet">
+        <path d="M0,100 C150,0 1050,0 1200,100 L1200,200 L0,200 Z" fill="#ffffff"/>
+    </svg>
 </section>
 
 <section id="offer">
@@ -144,7 +155,7 @@
 <section id="logistics" class="logistics">
     <h2>GLOBAL LOGISTICS</h2>
     <div class="grid">
-        <div class="card"><h3>Express Delivery</h3><p>Urgent air freight for critical spare parts via DHL, FedEx, and UPS[cite: 6].</p></div>
+        <div class="card"><h3>Express Delivery</h3><p>Urgent air freight for critical spare parts via DHL, FedEx, and UPS.</p></div>
         <div class="card"><h3>Shipyard Support</h3><p>Consolidated shipments and direct delivery to major shipyards worldwide.</p></div>
         <div class="card"><h3>Marine Logistics</h3><p>Reliable door-to-deck delivery service in all major international ports.</p></div>
     </div>
@@ -169,7 +180,7 @@
 </section>
 
 <footer>
-    © 2026 KmarinEOOD | Marine Technical Supply & Logistics Professional Services [cite: 8]
+    © 2026 KmarinEOOD | Marine Technical Supply & Logistics Professional Services
 </footer>
 
 <script>
@@ -186,7 +197,7 @@
         observer.observe(card);
     });
 
-    // Обработка формы [cite: 9]
+    // Обработка формы
     const form = document.getElementById("form");
     const success = document.getElementById("success");
     form.addEventListener("submit", function(e){
