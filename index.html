@@ -1,7 +1,6 @@
-```html id="r4a8k9"
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -26,9 +25,9 @@ html{scroll-behavior:smooth}
 
 body{
 font-family:'Inter',sans-serif;
-color:var(--text);
-line-height:1.6;
 background:#fff;
+color:#333;
+line-height:1.6;
 }
 
 /* HEADER */
@@ -37,18 +36,18 @@ header{
 position:fixed;
 top:0;
 width:100%;
-background:#ffffffee;
-backdrop-filter:blur(6px);
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 6%;
+background:#ffffffea;
+backdrop-filter:blur(6px);
+box-shadow:0 2px 15px rgba(0,0,0,0.06);
 z-index:1000;
-box-shadow:0 2px 15px rgba(0,0,0,0.05);
 }
 
 .logo{
-font-size:1.6rem;
+font-size:1.7rem;
 font-weight:700;
 color:var(--primary);
 }
@@ -56,17 +55,19 @@ color:var(--primary);
 nav a{
 margin-left:25px;
 text-decoration:none;
-color:#333;
 font-weight:500;
-font-size:0.9rem;
+color:#333;
 transition:0.3s;
 }
 
-nav a:hover{color:var(--accent)}
+nav a:hover{
+color:var(--accent);
+}
 
 /* HERO */
 
 .hero{
+
 height:100vh;
 position:relative;
 display:flex;
@@ -74,129 +75,145 @@ align-items:center;
 justify-content:center;
 text-align:center;
 color:#fff;
+overflow:hidden;
+
 }
 
-.hero video{
+/* animated background */
+
+canvas{
 position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
-object-fit:cover;
-}
-
-.hero-overlay{
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,43,78,0.65);
+background:#002b4e;
 }
 
 .hero-content{
+
 position:relative;
 z-index:2;
 max-width:800px;
-padding:20px;
+
 }
 
 .hero h1{
-font-size:3.8rem;
+
+font-size:4rem;
 margin-bottom:20px;
+
 }
 
 .hero p{
+
 font-size:1.2rem;
 margin-bottom:35px;
+
 }
 
 .btn{
-display:inline-block;
+
 padding:15px 40px;
 background:#fff;
-color:var(--primary);
+color:#002b4e;
 text-decoration:none;
 font-weight:600;
 border-radius:4px;
 transition:0.3s;
+
 }
 
 .btn:hover{
-background:var(--accent);
+
+background:#0aa4ff;
 color:#fff;
+
 }
 
 /* SECTION */
 
 section{
+
 padding:100px 6%;
+
 }
 
 .section-title{
+
 text-align:center;
 font-size:2.3rem;
 color:var(--primary);
+
 }
 
 .section-bar{
+
 width:60px;
 height:4px;
 background:var(--accent);
 margin:20px auto 60px;
+
 }
 
 /* SERVICES */
 
 .services{
-background:var(--light);
+
+background:#f4f7f9;
+
 }
 
 .grid{
+
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:35px;
+gap:30px;
+
 }
 
 .card{
+
 background:#fff;
 padding:40px;
 border-radius:10px;
 box-shadow:0 10px 25px rgba(0,0,0,0.05);
 transition:0.3s;
+
 }
 
 .card:hover{
+
 transform:translateY(-10px);
 box-shadow:0 20px 40px rgba(0,0,0,0.15);
+
 }
 
 .icon{
+
 font-size:2rem;
-margin-bottom:15px;
-}
-
-.card h3{
-color:var(--primary);
 margin-bottom:10px;
+
 }
 
-/* EQUIPMENT */
+/* MANUFACTURERS */
 
-.equipment-list{
+.manufacturers{
 
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:20px;
 margin-top:30px;
 
 }
 
-.equipment-item{
+.brand{
 
 background:#fff;
 padding:25px;
-border-radius:8px;
 text-align:center;
-box-shadow:0 6px 15px rgba(0,0,0,0.05);
+border-radius:6px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
 
 }
 
@@ -210,19 +227,11 @@ text-align:center;
 
 }
 
-.logistics p{
-
-max-width:700px;
-margin:auto;
-margin-top:20px;
-
-}
-
 /* CONTACT */
 
 .contact{
 
-background:var(--light);
+background:#f4f7f9;
 
 }
 
@@ -238,16 +247,15 @@ gap:15px;
 input,textarea{
 
 padding:12px;
-border-radius:4px;
 border:1px solid #ccc;
-font-family:inherit;
+border-radius:4px;
 
 }
 
 button{
 
 padding:15px;
-background:var(--primary);
+background:#002b4e;
 color:#fff;
 border:none;
 font-weight:600;
@@ -256,34 +264,23 @@ cursor:pointer;
 }
 
 button:hover{
-background:var(--accent);
+
+background:#0aa4ff;
+
 }
 
 /* FOOTER */
 
 footer{
+
 background:#111;
 color:#aaa;
 text-align:center;
 padding:40px;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:2.3rem;
-}
-
-nav{
-display:none;
-}
 
 }
 
 </style>
-
 </head>
 
 <body>
@@ -307,26 +304,15 @@ display:none;
 
 <section id="home" class="hero">
 
-<video autoplay muted loop>
-
-<source src="https://cdn.coverr.co/videos/coverr-container-ship-in-the-ocean-5586/1080p.mp4" type="video/mp4">
-
-</video>
-
-<div class="hero-overlay"></div>
+<canvas id="bg"></canvas>
 
 <div class="hero-content">
 
-<h1>Global Marine Technical Supply</h1>
+<h1>KmarinEOOD</h1>
 
-<p>
+<p>Global Marine Technical Supply & Logistics</p>
 
-Professional sourcing of marine engine spare parts,
-technical equipment and worldwide logistics support.
-
-</p>
-
-<a class="btn" href="#contact">Request a Quote</a>
+<a class="btn" href="#contact">Request Quote</a>
 
 </div>
 
@@ -336,49 +322,32 @@ technical equipment and worldwide logistics support.
 <section id="services" class="services">
 
 <h2 class="section-title">Marine Equipment & Services</h2>
-
 <div class="section-bar"></div>
 
 <div class="grid">
 
 <div class="card">
-
 <div class="icon">⚙️</div>
-
-<h3>Engine Spare Parts</h3>
-
-<p>Supply of MAN, Wärtsilä and CME-MAN engine components including pistons, fuel valves and overhaul kits.</p>
-
+<h3>Main Engine Spares</h3>
+<p>Supply of MAN, CME-MAN and Wärtsilä spare parts.</p>
 </div>
 
 <div class="card">
-
 <div class="icon">🔧</div>
-
-<h3>Pumps & Machinery</h3>
-
-<p>Centrifugal pumps, compressors, purifiers and marine auxiliary machinery.</p>
-
+<h3>Pumps & Compressors</h3>
+<p>Marine pumps, compressors and auxiliary machinery.</p>
 </div>
 
 <div class="card">
-
 <div class="icon">⚡</div>
-
 <h3>Electrical Equipment</h3>
-
-<p>Automation systems, circuit breakers and marine electrical components.</p>
-
+<p>Automation systems and marine electrical components.</p>
 </div>
 
 <div class="card">
-
 <div class="icon">🚢</div>
-
-<h3>Ship Supply Logistics</h3>
-
-<p>Fast delivery of marine spare parts to ports worldwide.</p>
-
+<h3>Ship Supply</h3>
+<p>Worldwide delivery of marine spare parts.</p>
 </div>
 
 </div>
@@ -389,19 +358,18 @@ technical equipment and worldwide logistics support.
 <section id="equipment">
 
 <h2 class="section-title">Manufacturers</h2>
-
 <div class="section-bar"></div>
 
-<div class="equipment-list">
+<div class="manufacturers">
 
-<div class="equipment-item">MAN Energy Solutions</div>
-<div class="equipment-item">Wärtsilä</div>
-<div class="equipment-item">Alfa Laval</div>
-<div class="equipment-item">Mitsubishi</div>
-<div class="equipment-item">Yanmar</div>
-<div class="equipment-item">IHI Turbo</div>
-<div class="equipment-item">Schneider Electric</div>
-<div class="equipment-item">Bosch Rexroth</div>
+<div class="brand">MAN Energy Solutions</div>
+<div class="brand">Wärtsilä</div>
+<div class="brand">Alfa Laval</div>
+<div class="brand">Mitsubishi</div>
+<div class="brand">Yanmar</div>
+<div class="brand">IHI Turbo</div>
+<div class="brand">Schneider Electric</div>
+<div class="brand">Bosch Rexroth</div>
 
 </div>
 
@@ -414,8 +382,8 @@ technical equipment and worldwide logistics support.
 
 <p>
 
-Door-to-deck delivery of marine spare parts via air freight,
-courier service and sea transport to any port worldwide.
+Air freight, courier delivery and sea transport
+to any port worldwide.
 
 </p>
 
@@ -431,15 +399,10 @@ courier service and sea transport to any port worldwide.
 <form>
 
 <input placeholder="Vessel Name">
-
 <input placeholder="IMO Number">
-
 <input placeholder="Part Name">
-
 <input placeholder="Maker">
-
 <input placeholder="Part Number">
-
 <input placeholder="Quantity">
 
 <textarea placeholder="Additional Information"></textarea>
@@ -457,6 +420,57 @@ courier service and sea transport to any port worldwide.
 Marine Technical Supply & Global Logistics
 
 </footer>
+
+
+<script>
+
+const canvas=document.getElementById("bg")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let particles=[]
+
+for(let i=0;i<80;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*0.5,
+vy:(Math.random()-0.5)*0.5
+
+})
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+particles.forEach(p=>{
+
+p.x+=p.vx
+p.y+=p.vy
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1
+if(p.y<0||p.y>canvas.height)p.vy*=-1
+
+ctx.beginPath()
+ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.fillStyle="#0aa4ff"
+ctx.fill()
+
+})
+
+requestAnimationFrame(draw)
+
+}
+
+draw()
+
+</script>
 
 </body>
 </html>
