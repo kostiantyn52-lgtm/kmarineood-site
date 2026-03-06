@@ -14,12 +14,12 @@
             line-height:1.6; 
             overflow-x: hidden;
             
-            /* ЭФФЕКТЫ ДЛЯ ПЕРВОЙ КАРТИНКИ */
+            /* ЭФФЕКТЫ ДЛЯ ПЕРВОЙ КАРТИНКИ (СУДНО В ПОРТУ) */
             background-image: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
                 url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500');
             background-attachment: fixed; /* Эффект 2: Параллакс */
-            background-size: contain;     /* Эффект 3: Без приближения */
+            background-size: contain;     /* Эффект 3: Оригинальный масштаб (отдаление) */
             background-repeat: no-repeat;
             background-position: center;
             background-color: #001a30;
@@ -57,7 +57,7 @@
             text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
 
-        /* СТИЛИЗАЦИЯ СЕКЦИЙ */
+        /* СТИЛИЗАЦИЯ СЕКЦИЙ (БЕЛЫЕ БЛОКИ) */
         section { padding: 120px 10%; position: relative; z-index: 1; }
         
         .content-section {
@@ -93,11 +93,11 @@
         /* ЭФФЕКТЫ ДЛЯ ВТОРОЙ КАРТИНКИ (СЕКЦИЯ ПРОДУКТОВ) */
         #products {
             background-image: 
-                /* Эффект 1: Градиентное наложение (как у первой картинки) */
+                /* Эффект 1: Градиентное наложение */
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
                 url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2500');
             background-attachment: fixed; /* Эффект 2: Параллакс */
-            background-size: contain;     /* Эффект 3: Оригинальный масштаб */
+            background-size: contain;     /* Эффект 3: Оригинальный масштаб (отдаление) */
             background-repeat: no-repeat;
             background-position: center;
             border-top: 1px solid rgba(255,255,255,0.3);
@@ -137,17 +137,41 @@
         /* ПОДВАЛ */
         footer { text-align:center; padding:50px; background:#04070a; color:#888; font-size: 15px; position: relative; z-index: 2; }
 
-        /* АДАПТИВНОСТЬ */
+        /* АДАПТИВНОСТЬ: ИСПРАВЛЕНИЕ ДЛЯ МОБИЛЬНЫХ */
         @media(max-width:768px){
-            .hero-content h1 { font-size: 45px; letter-spacing: 2px; }
-            .hero-content p { font-size: 18px; }
-            header { padding: 10px 5%; flex-direction: column; }
-            .logo-img { height: 80px; margin-bottom: 10px; }
-            header nav { display: flex; flex-wrap: wrap; justify-content: center; }
-            header nav a { margin: 5px 10px; font-size: 13px; }
-            section { padding: 80px 5%; }
-            h2 { font-size: 32px; }
-            body, #products { background-size: cover; background-attachment: scroll; } 
+            body {
+                background-size: cover !important; 
+                background-attachment: scroll !important;
+                background-position: center center;
+            }
+            #products {
+                background-size: cover !important;
+                background-attachment: scroll !important;
+                background-position: center center;
+            }
+            .hero-content h1 { font-size: 38px; letter-spacing: 2px; }
+            .hero-content p { font-size: 16px; }
+            header { 
+                padding: 10px 5%; 
+                flex-direction: column; 
+                height: auto;
+            }
+            .logo-img { 
+                height: 80px; 
+                margin-bottom: 10px; 
+            }
+            header nav { 
+                display: flex; 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 10px;
+            }
+            header nav a { 
+                margin: 0 5px; 
+                font-size: 12px; 
+            }
+            section { padding: 60px 5%; }
+            h2 { font-size: 28px; }
         }
     </style>
 </head>
