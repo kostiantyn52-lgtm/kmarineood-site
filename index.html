@@ -60,17 +60,16 @@ max-width:700px;
 margin:auto;
 }
 
-/* SHIP SILHOUETTE */
-.hero::after{
-content:'';
+/* INLINE SVG SHIP */
+.ship-silhouette {
 position:absolute;
 bottom:0;
 left:50%;
 transform:translateX(-50%);
 width:100%;
 height:200px;
-background:url('https://i.ibb.co/vX0B4v1/ship-silhouette.png') center bottom/contain no-repeat;
 opacity:0.25;
+pointer-events:none;
 }
 
 /* SECTIONS */
@@ -163,7 +162,6 @@ color:#aaa;
 .hero p{font-size:16px;}
 header nav a{margin-left:15px;}
 }
-
 </style>
 </head>
 <body>
@@ -183,6 +181,10 @@ header nav a{margin-left:15px;}
 <h1>KmarinEOOD</h1>
 <p>Global Marine Technical Supply & Logistics</p>
 </div>
+<!-- INLINE SVG SHIP -->
+<svg class="ship-silhouette" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax meet">
+<path d="M0,100 C150,0 1050,0 1200,100 L1200,200 L0,200 Z" fill="#ffffff"/>
+</svg>
 </section>
 
 <section id="offer">
@@ -257,9 +259,8 @@ Inquiry sent successfully. We will contact you shortly.
 </footer>
 
 <script>
-const form = document.getElementById("form");
-const success = document.getElementById("success");
-const submitBtn = form.querySelector("button");
+const form=document.getElementById("form");
+const success=document.getElementById("success");
 form.addEventListener("submit", function(e){
 e.preventDefault();
 form.style.display="none";
