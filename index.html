@@ -22,36 +22,16 @@ justify-content:space-between;
 align-items:center;
 box-shadow:0 3px 10px rgba(0,0,0,0.2);
 }
-header .logo{
-color:white;
-font-weight:700;
-font-size:24px;
-}
-header nav a{
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-weight:500;
-transition:0.3s;
-}
+header .logo{color:white;font-weight:700;font-size:24px;}
+header nav a{color:white;text-decoration:none;margin-left:25px;font-weight:500;transition:0.3s;}
 header nav a:hover{ color:#00aaff; }
 
 /* HERO */
-.hero{
-position:relative;
-height:90vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:white;
-background:linear-gradient(rgba(0,43,78,0.7),rgba(0,43,78,0.7)), 
-url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
-overflow:hidden;
-}
+.hero{position:relative;height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;color:white;
+background:linear-gradient(rgba(0,43,78,0.7),rgba(0,43,78,0.7)), url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;overflow:hidden;}
 .hero h1{font-size:60px;margin-bottom:15px;}
 .hero p{font-size:20px;max-width:700px;margin:auto;}
-.ship-silhouette {position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:200px;opacity:0.25;pointer-events:none;}
+.ship-silhouette{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:200px;opacity:0.25;pointer-events:none;}
 
 /* SECTIONS */
 section{padding:100px 10%;}
@@ -70,15 +50,12 @@ h2{text-align:center;margin-bottom:50px;font-size:36px;color:#002b4e;}
 form{max-width:500px;margin:auto;display:grid;gap:15px;}
 input,textarea{padding:12px;border:none;border-radius:4px;}
 button{padding:14px;border:none;background:white;color:#002b4e;font-weight:600;cursor:pointer;transition:0.3s;}
-button:disabled{opacity:0.5;cursor:not-allowed;}
-button:hover:not(:disabled){background:#00aaff;color:white;}
+button:hover{background:#00aaff;color:white;}
 .success{display:none;margin-top:20px;}
 .contact-info{margin-top:40px;}
 
 /* FOOTER */
 footer{text-align:center;padding:30px;background:#111;color:#aaa;}
-
-/* RESPONSIVE */
 @media(max-width:768px){.hero h1{font-size:40px;}.hero p{font-size:16px;}header nav a{margin-left:15px;}}
 </style>
 </head>
@@ -141,16 +118,19 @@ footer{text-align:center;padding:30px;background:#111;color:#aaa;}
 
 <section id="contact" class="contact">
 <h2>SEND YOUR INQUIRY</h2>
-<form id="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+<form id="form" action="https://formspree.io/f/mjgavall" method="POST">
 <input type="text" name="name" placeholder="Name" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="text" name="company" placeholder="Company" required>
 <textarea name="message" placeholder="Your request" required></textarea>
 <button type="submit">Send Inquiry</button>
 </form>
+
 <div class="success" id="success">
 Inquiry sent successfully. We will contact you shortly.
 </div>
+
 <div class="contact-info">
 <p><strong>KmarinEOOD</strong></p>
 <p>Email: purchase@kmarine.org</p>
@@ -158,13 +138,11 @@ Inquiry sent successfully. We will contact you shortly.
 </div>
 </section>
 
-<footer>
-© 2026 KmarinEOOD | Marine Technical Supply & Logistics
-</footer>
+<footer>© 2026 KmarinEOOD | Marine Technical Supply & Logistics</footer>
 
 <script>
-const form=document.getElementById("form");
-const success=document.getElementById("success");
+const form = document.getElementById("form");
+const success = document.getElementById("success");
 form.addEventListener("submit", function(e){
     e.preventDefault();
     fetch(form.action, {
@@ -175,13 +153,7 @@ form.addEventListener("submit", function(e){
         if(response.ok){
             form.style.display="none";
             success.style.display="block";
-        } else {
-            response.json().then(data=>{
-                alert("Ошибка отправки: " + (data.error || "Попробуйте позже"));
-            });
         }
-    }).catch(error=>{
-        alert("Ошибка отправки: " + error);
     });
 });
 </script>
