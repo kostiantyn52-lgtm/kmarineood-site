@@ -3,273 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KmarinEOOD | Marine Technical Supply & Logistics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>KmarinEOOD | Global Marine Technical Supply</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* БАЗОВЫЕ СТИЛИ */
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Poppins', sans-serif; color:#333; line-height:1.6; overflow-x: hidden; background: #fff; }
-
-        /* ШАПКА */
-        header {
-            position:fixed; top:0; width:100%; z-index:1000;
-            background: rgba(0, 43, 78, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 10px 8%;
-            display:flex; justify-content:space-between; align-items:center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        .logo-img { width: 300px; height: 60px; object-fit: contain; }
-        header nav a { color:white; text-decoration:none; margin-left:25px; font-weight:500; transition:0.3s; }
-        header nav a:hover { color:#00aaff; }
-
-        /* ГЛАВНЫЙ ЭКРАН (HERO) С ТЕМ САМЫМ СУДНОМ */
-        .hero {
-            position:relative; 
-            height:100vh; 
-            display:flex; 
-            align-items:center; 
-            justify-content:center; 
-            text-align:center; 
-            color:white; 
-            /* Фоновая картинка с морским горизонтом */
-            background: linear-gradient(to bottom, rgba(0,43,78,0.7), rgba(0,43,78,0.3)), 
-                        url('https://images.unsplash.com/photo-1516216628859-9bccecad13f7?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Параллакс */
+        :root {
+            --primary: #002b4e;
+            --accent: #005a8d;
+            --white: #ffffff;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .hero-content { z-index: 2; position: relative; }
-        .hero-content h1 { font-size: 70px; font-weight: 800; text-transform: uppercase; letter-spacing: 5px; line-height: 1; }
-        .hero-content p { font-size: 24px; font-weight: 300; margin-top: 10px; opacity: 0.9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; overflow-x: hidden; }
 
-        /* Элемент судна (как в первых версиях) */
-        .hero-ship-overlay {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: auto;
-            z-index: 1;
-            pointer-events: none;
-            filter: drop-shadow(0 -10px 20px rgba(0,0,0,0.5));
+        /* Navigation */
+        nav { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.95); position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
+        /* Logo: No limits as requested */
+        .logo img { height: auto; width: auto; display: block; }
+
+        /* Video Hero Section */
+        .hero { 
+            position: relative; height: 100vh; width: 100%; 
+            display: flex; align-items: center; justify-content: center; 
+            overflow: hidden; color: var(--white); text-align: center;
+        }
+        #bg-video {
+            position: absolute; top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%; width: auto; height: auto;
+            transform: translate(-50%, -50%); z-index: -1; object-fit: cover;
+        }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,25,46,0.5); z-index: 0; }
+        .hero-content { position: relative; z-index: 1; padding: 0 20px; }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero-content p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; font-weight: 300; opacity: 0.9; }
+
+        /* Parallax Section */
+        .parallax-bg {
+            height: 400px; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;
+            display: flex; align-items: center; justify-content: center;
+            background-image: linear-gradient(rgba(0,43,78,0.7), rgba(0,43,78,0.7)), url('https://images.unsplash.com/photo-1516216628859-9bccecab13ca?auto=format&fit=crop&q=80&w=1920');
         }
 
-        /* Декоративные линии из твоего файла !DOCTYPE 2 html.txt */
-        .bg-lines {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0;
+        /* Content Sections & Transitions */
+        .section { padding: 100px 10%; opacity: 0; transform: translateY(30px); transition: var(--transition); }
+        .section.visible { opacity: 1; transform: translateY(0); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
+        .card { background: #fff; border-radius: 4px; overflow: hidden; transition: var(--transition); border-bottom: 4px solid transparent; }
+        .card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .card-body { padding: 30px; }
+        .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.5rem; text-transform: uppercase; }
+
+        /* Parts List from TeamMar style */
+        .parts-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .tag { font-size: 0.8rem; background: #eee; padding: 4px 10px; border-radius: 2px; color: #666; }
+
+        /* CTA Button */
+        .btn { 
+            display: inline-block; background: var(--accent); color: var(--white) !important; 
+            padding: 16px 35px; text-decoration: none; border-radius: 2px; 
+            font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
         }
-        .line {
-            position: absolute; width: 1px; height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-        }
+        .btn:hover { background: var(--primary); transform: scale(1.05); }
 
-        /* СЕКЦИИ */
-        section { padding: 100px 10%; position: relative; }
-        h2 { text-align:center; margin-bottom:50px; font-size:42px; color:#002b4e; text-transform: uppercase; }
-        h2::after { content: ''; display: block; width: 80px; height: 4px; background: #00aaff; margin: 20px auto; }
-
-        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
-        
-        /* КАРТОЧКИ С АНИМАЦИЕЙ ПРИ СКРОЛЛЕ */
-        .card { 
-            background:white; padding:40px; border-radius:15px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: 0.5s ease;
-            opacity: 0; transform: translateY(50px);
-            border: 1px solid #eee;
-        }
-        .card.visible { opacity: 1; transform: translateY(0); }
-        .card:hover { transform: translateY(-15px); box-shadow: 0 20px 45px rgba(0,0,0,0.1); border-bottom: 5px solid #00aaff; }
-        .card h3 { color: #002b4e; margin-bottom: 15px; font-size: 24px; }
-
-        /* ЛОГИСТИКА */
-        .logistics { background:#f9fbff; }
-
-        /* КОНТАКТЫ */
-        .contact { background:#002b4e; color:white; text-align:center; }
-        form { max-width:700px; margin: 40px auto; display:grid; gap:20px; }
-        input, textarea { padding:18px; border-radius:8px; border:none; font-family: inherit; font-size: 16px; width: 100%; }
-        button { 
-            padding:20px; border:none; background:#00aaff; color:white; 
-            font-weight:700; cursor:pointer; border-radius:8px; transition:0.3s; 
-            font-size: 18px; text-transform: uppercase; letter-spacing: 1px;
-        }
-        button:hover { background:white; color:#002b4e; transform: scale(1.02); }
-        
-        .success { display:none; padding: 20px; background: rgba(0, 170, 255, 0.2); border-radius: 8px; margin-bottom: 20px; border: 1px solid #00aaff; }
-        
-        .contact-info { margin-top:60px; font-size: 20px; }
-        .contact-info a { color:#00aaff; text-decoration:none; font-weight: 600; }
-
-        footer { text-align:center; padding:50px; background:#08131d; color:#666; font-size: 14px; border-top: 1px solid #1a2a3a; }
-
-        /* МОБИЛЬНАЯ ВЕРСИЯ */
-        @media(max-width:768px){
-            .hero-content h1 { font-size: 42px; }
-            .logo-img { width: 220px; }
-            header nav { display: none; }
-            section { padding: 60px 5%; }
-        }
+        footer { background: #111; color: #777; padding: 50px 5%; text-align: center; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-<header>
-    <img src="Logo.jpg" alt="KmarinEOOD" class="logo-img">
     <nav>
-        <a href="#offer">Offer</a>
-        <a href="#products">Products</a>
-        <a href="#logistics">Logistics</a>
-        <a href="#contact">Contact</a>
+        <div class="logo">
+            <img src="Logo.jpg" alt="KmarinEOOD Logo">
+        </div>
+        <div style="color: var(--primary); font-weight: 700; letter-spacing: 2px;">MARINE SUPPLY</div>
     </nav>
-</header>
 
-<section class="hero">
-    <div class="bg-lines">
-        <div class="line" style="left:20%;"></div>
-        <div class="line" style="left:50%;"></div>
-        <div class="line" style="left:80%;"></div>
-    </div>
-    
-    <div class="hero-content">
-        <h1>KmarinEOOD</h1>
-        <p>Expert Marine Technical Supply & Global Logistics</p>
-    </div>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-large-cargo-ship-in-the-middle-of-the-ocean-41005-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>KmarinEOOD</h1>
+            <p>Reliable technical supply and international logistics. High-quality spare parts and electrical equipment delivered to your vessel 24/7.</p>
+            <a href="mailto:purchase@kmarine.org" class="btn">Send Inquiry</a>
+        </div>
+    </section>
 
-    <svg class="hero-ship-overlay" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax meet">
-        <path d="M0,250 C150,150 1050,150 1200,250 L1200,300 L0,300 Z" fill="#ffffff"/>
-    </svg>
-</section>
+    <section class="section">
+        <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem;">Total Solution Service</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Engine Spare Parts</h3>
+                    <p>Professional sourcing for main and auxiliary engines. Specialist in Korean and European brands.</p>
+                    <div class="parts-tags">
+                        <span class="tag">MAN B&W</span><span class="tag">STX</span><span class="tag">CME-MAN</span><span class="tag">Pistons</span><span class="tag">Nozzles</span><span class="tag">Valves</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3>Electrical & Automation</h3>
+                    <p>Comprehensive range of marine electrical components and automation systems.</p>
+                    <div class="parts-tags">
+                        <span class="tag">Schneider Electric</span><span class="tag">LS Electric</span><span class="tag">Circuit Breakers</span><span class="tag">Sensors</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3>Technical Stores</h3>
+                    <p>Global logistics and door-to-deck delivery for all types of marine technical stores.</p>
+                    <div class="parts-tags">
+                        <span class="tag">Logistics</span><span class="tag">Engine Stores</span><span class="tag">Deck Stores</span><span class="tag">Cabin Stores</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="parallax-bg">
+        <h2 style="color: white; font-size: 2.5rem; text-transform: uppercase;">Global Delivery Support</h2>
+    </section>
 
+    <section class="section">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="color: var(--primary); margin-bottom: 20px;">Fast Response & Competitive Prices</h2>
+            <p>We understand the importance of vessel uptime. Our team specializes in finding the exact technical match for your request and ensuring the fastest delivery to any port worldwide.</p>
+            <br>
+            <a href="mailto:purchase@kmarine.org" class="btn">Get a Quote Now</a>
+        </div>
+    </section>
 
-<section id="offer">
-    <h2>WHAT WE OFFER</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Ship Spare Parts</h3>
-            <p>Direct sourcing of critical spare parts for main engines, generators, and auxiliary machinery from trusted global makers.</p>
-        </div>
-        <div class="card">
-            <h3>Technical Supply</h3>
-            <p>Comprehensive technical stores, deck and engine supplies, and specialized equipment for all vessel types.</p>
-        </div>
-        <div class="card">
-            <h3>Fast Response</h3>
-            <p>Optimized technical inquiry processing ensuring fast delivery and accurate parts identification to minimize downtime.</p>
-        </div>
-    </div>
-</section>
+    <footer>
+        <p>&copy; 2026 KmarinEOOD. All Rights Reserved. | purchase@kmarine.org</p>
+    </footer>
 
-<section id="products">
-    <h2>CORE PRODUCT RANGE</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Engine Components</h3>
-            <p>Specialized in **MAN B&W 6S42MC7** and **5L16/24**. Fuel nozzles, piston crowns, cylinder liners, and bearings.</p>
-        </div>
-        <div class="card">
-            <h3>Purifiers & Pumps</h3>
-            <p>Spare parts for Alfa Laval and Westfalia oil purifiers. Full support for IMO, Allweiler, and Iron pumps.</p>
-        </div>
-        <div class="card">
-            <h3>Turbochargers</h3>
-            <p>Complete units and service kits for ABB, Mitsubishi (MET), and MAN turbochargers.</p>
-        </div>
-        <div class="card">
-            <h3>Air Compressors</h3>
-            <p>Genuine and OEM spares for Sperre, Sauer & Sohn, and Tanabe marine compressors.</p>
-        </div>
-        <div class="card">
-            <h3>Electrical & Automation</h3>
-            <p>Sensors, transmitters, and electrical modules for engine room control systems.</p>
-        </div>
-        <div class="card">
-            <h3>Deck Machinery</h3>
-            <p>Winch hydraulic parts, mooring equipment, and crane spare parts.</p>
-        </div>
-    </div>
-</section>
+    <script>
+        // Transition Animation on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
 
-<section id="logistics" class="logistics">
-    <h2>GLOBAL LOGISTICS</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Door-to-Deck</h3>
-            <p>Seamless delivery service to any port or shipyard globally, handling the last mile logistics for you.</p>
-        </div>
-        <div class="card">
-            <h3>Express Freight</h3>
-            <p>Time-critical air freight solutions via DHL, FedEx, and specialized marine couriers.</p>
-        </div>
-        <div class="card">
-            <h3>Customs Handling</h3>
-            <p>Expert management of "Spare Parts in Transit" documentation and customs clearance in all major hubs.</p>
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="contact">
-    <h2>SEND YOUR INQUIRY</h2>
-    <div class="success" id="success">
-        <strong>SUCCESS!</strong> Your inquiry has been sent. We will contact you with a quote shortly.
-    </div>
-    <form id="form" action="https://formspree.io/f/mjgavall" method="POST">
-        <input type="text" name="name" placeholder="Contact Person" required>
-        <input type="email" name="email" placeholder="Your Company Email" required>
-        <input type="text" name="vessel" placeholder="Vessel Name / IMO Number">
-        <textarea name="message" rows="5" placeholder="Specify your request (Maker, Engine Type, Part Number...)" required></textarea>
-        <button type="submit">SEND REQUEST</button>
-    </form>
-    
-    <div class="contact-info">
-        <p><strong>KmarinEOOD</strong></p>
-        <p>Email: <a href="mailto:purchase@kmarine.org">purchase@kmarine.org</a></p>
-        <p>Phone: +359 77 22 701</p>
-    </div>
-</section>
-
-<footer>
-    © 2026 KmarinEOOD | Marine Technical Supply & Logistics | Professional Services for Shipowners
-</footer>
-
-<script>
-    // Анимация выплывания блоков при скролле
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
         });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.card').forEach(card => {
-        observer.observe(card);
-    });
-
-    // Обработка отправки формы
-    const form = document.getElementById("form");
-    const success = document.getElementById("success");
-    form.addEventListener("submit", function(e){
-        e.preventDefault();
-        const btn = form.querySelector('button');
-        btn.textContent = "SENDING...";
-        fetch(form.action, {
-            method: form.method,
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        }).then(response => {
-            if(response.ok){
-                form.style.display="none";
-                success.style.display="block";
-            } else {
-                alert("Something went wrong. Please try again later.");
-                btn.textContent = "SEND REQUEST";
-            }
-        });
-    });
-</script>
-
+    </script>
 </body>
 </html>
