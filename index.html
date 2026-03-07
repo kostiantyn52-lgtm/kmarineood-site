@@ -60,6 +60,7 @@
             border-radius: 50px; 
             display: inline-block;
             border: 1px solid transparent;
+            will-change: transform, background, box-shadow; /* Оптимизация анимации */
         }
 
         header nav a:hover { 
@@ -95,7 +96,7 @@
         .card:hover { transform: translateY(-10px); border-bottom: 5px solid #00aaff; box-shadow: 0 15px 35px rgba(0,43,78,0.12); }
         .card h3 { color: #002b4e; margin-bottom: 15px; font-size: 22px; }
 
-        /* LAYER 2 BACKGROUND (PRODUCTS FIXED) */
+        /* LAYER 2 BACKGROUND */
         #products {
             background: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
@@ -110,95 +111,45 @@
         .contact { background: rgba(0, 26, 48, 0.98); color:white; text-align:center; }
         .contact h2 { color: white; }
         
-        form { 
-            width: 100%; 
-            max-width:700px; 
-            margin: 40px auto; 
-            display:grid; 
-            gap:15px; 
-        }
+        form { width: 100%; max-width:700px; margin: 40px auto; display:grid; gap:15px; }
         
         input, textarea { 
-            width: 100%;
-            padding:18px; 
-            border-radius:8px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            background: rgba(255,255,255,0.05); 
-            color: white; 
-            font-family: inherit; 
-            font-size: 16px; 
-            transition: all 0.3s ease;
+            width: 100%; padding:18px; border-radius:8px; border: 1px solid rgba(255,255,255,0.1); 
+            background: rgba(255,255,255,0.05); color: white; font-family: inherit; font-size: 16px; transition: all 0.3s ease;
         }
 
-        input:hover, textarea:hover { 
-            border-color: #00aaff; 
-            background: rgba(255, 255, 255, 0.1); 
-            box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        input:focus, textarea:focus { 
-            background: rgba(255,255,255,0.12); 
-            outline: none; 
-            border-color: #00aaff; 
-            box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
-            transform: translateY(-2px);
+        input:hover, textarea:hover, input:focus, textarea:focus { 
+            border-color: #00aaff; background: rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.3); transform: translateY(-2px); outline: none;
         }
 
         button { 
-            width: 100%;
-            padding:18px; border:none; background:#00aaff; color:white; font-weight:700; 
-            cursor:pointer; border-radius:8px; transition:0.3s; font-size: 18px; 
-            text-transform: uppercase;
+            width: 100%; padding:18px; border:none; background:#00aaff; color:white; font-weight:700; 
+            cursor:pointer; border-radius:8px; transition:0.3s; font-size: 18px; text-transform: uppercase;
         }
         button:hover { background:white; color:#002b4e; transform: scale(1.02); }
 
-        .email-link {
-            color: #00aaff;
-            text-decoration: none;
-            transition: 0.3s;
-            border-bottom: 1px solid transparent;
-        }
-        .email-link:hover {
-            border-bottom: 1px solid #00aaff;
-        }
+        .email-link { color: #00aaff; text-decoration: none; transition: 0.3s; border-bottom: 1px solid transparent; }
+        .email-link:hover { border-bottom: 1px solid #00aaff; }
 
         .footer-logo { 
-            height: 150px; 
-            width: auto; 
-            display: block;
-            margin: 30px auto 0; 
-            object-fit: contain; 
+            height: 150px; width: auto; display: block; margin: 30px auto 0; object-fit: contain; 
         }
 
         /* WHATSAPP STYLES */
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            z-index: 2000;
-            transition: 0.3s;
+            position: fixed; bottom: 30px; right: 30px; background-color: #25d366;
+            color: white; width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 2000; transition: 0.3s;
+            will-change: transform; /* Оптимизация анимации */
         }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
         .whatsapp-float svg { width: 35px; height: 35px; fill: white; }
 
         .whatsapp-inline {
-            display: inline-flex;
-            align-items: center;
-            vertical-align: middle;
-            margin-left: 10px;
-            text-decoration: none;
-            color: #25d366;
-            font-weight: 600;
+            display: inline-flex; align-items: center; vertical-align: middle;
+            margin-left: 10px; text-decoration: none; color: #25d366; font-weight: 600;
         }
         .whatsapp-inline svg { width: 20px; height: 20px; fill: #25d366; margin-right: 5px; }
 
@@ -209,13 +160,11 @@
         @media(max-width:768px){
             .main-bg-layer, #products { background-size: cover; background-attachment: scroll; background-position: center top; }
             .hero-content h1 { font-size: 34px; }
-            .hero-content p { font-size: 18px; }
             h2 { font-size: 28px; }
             header { padding: 10px; }
             header nav { gap: 5px; flex-wrap: wrap; justify-content: center; }
             header nav a { padding: 8px 12px; font-size: 13px; }
             section { padding: 60px 5%; }
-            .footer-logo { height: 150px; }
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; }
         }
     </style>
@@ -258,30 +207,12 @@
 <section id="products">
     <h2>OUR PRODUCTS</h2>
     <div class="grid">
-        <div class="card">
-            <h3>Main & Aux Engines</h3>
-            <p>Specialized support for MAN B&W/STX, SULZER, DAIHATSU, YANMAR, AKASAKA, MITSUBISHI.</p>
-        </div>
-        <div class="card">
-            <h3>Critical Spares</h3>
-            <p>High-quality piston crowns, fuel nozzles, cylinder liners, and bearings for marine diesel engines.</p>
-        </div>
-        <div class="card">
-            <h3>Pumps & Purifiers</h3>
-            <p>Spares for Westfalia oil purifiers and engine room pumps: TAIKO, NANIWA, SHINKO, TAIKOKU, ISHI, SHIN SHIN, SJ-SERIES, ALFA-LAVAL.</p>
-        </div>
-        <div class="card">
-            <h3>Air Compressors</h3>
-            <p>Maintenance kits and valves for marine compressors: YANMAR, TANABE, SPERRE, HATLAPA, HAMWORTHY, TEIKOKU.</p>
-        </div>
-        <div class="card">
-            <h3>Automation</h3>
-            <p>Electrical components, sensors, and control modules for engine management systems.</p>
-        </div>
-        <div class="card">
-            <h3>Deck Machinery</h3>
-            <p>Hydraulic parts, mooring winch spares, and crane components.</p>
-        </div>
+        <div class="card"><h3>Main & Aux Engines</h3><p>Specialized support for MAN B&W/STX, SULZER, DAIHATSU, YANMAR, AKASAKA, MITSUBISHI.</p></div>
+        <div class="card"><h3>Critical Spares</h3><p>High-quality piston crowns, fuel nozzles, cylinder liners, and bearings for marine diesel engines.</p></div>
+        <div class="card"><h3>Pumps & Purifiers</h3><p>Spares for Westfalia oil purifiers and engine room pumps: TAIKO, NANIWA, SHINKO, TAIKOKU, ISHI, SHIN SHIN, SJ-SERIES, ALFA-LAVAL.</p></div>
+        <div class="card"><h3>Air Compressors</h3><p>Maintenance kits and valves for marine compressors: YANMAR, TANABE, SPERRE, HATLAPA, HAMWORTHY, TEIKOKU.</p></div>
+        <div class="card"><h3>Automation</h3><p>Electrical components, sensors, and control modules for engine management systems.</p></div>
+        <div class="card"><h3>Deck Machinery</h3><p>Hydraulic parts, mooring winch spares, and crane components.</p></div>
     </div>
 </section>
 
@@ -314,8 +245,7 @@
                 WhatsApp
             </a>
         </p>
-        <img src="Logo7.png" alt="KmarinEOOD" class="footer-logo">
-    </div>
+        <img src="Logo7.png" alt="KmarinEOOD" class="footer-logo" loading="lazy"> </div>
 </section>
 
 <footer>© 2026 KmarinEOOD | Marine Technical Supply & Logistics</footer>
@@ -326,6 +256,7 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                observer.unobserve(entry.target); /* Оптимизация: перестаем следить после анимации */
             }
         });
     }, { threshold: 0.1 });
