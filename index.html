@@ -27,30 +27,49 @@
             background: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
                 url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') no-repeat center;
-            background-size: cover; /* Исправлено: теперь картинка на весь экран */
+            background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
-        /* HEADER & NAVIGATION (FIXED LOGO) */
+        /* HEADER & NAVIGATION */
         header {
             position:fixed; top:0; width:100%; z-index:1000;
             background: rgba(0, 32, 63, 0.95); 
-            padding: 10px 8%;
-            display:flex; justify-content:space-between; align-items:center;
+            padding: 15px 8%;
+            display:flex; 
+            justify-content: center; /* Центрируем меню, так как логотипа больше нет вверху */
+            align-items:center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        .logo-img { 
-            height: 125px; /* Уменьшили для аккуратности */
-            width: auto; 
-            object-fit: contain; 
+
+        header nav {
+            display: flex;
+            gap: 15px;
         }
+
         header nav a { 
-            color:white; text-decoration:none; margin-left:25px; 
-            font-weight:500; transition:0.3s; font-size: 14px; 
-            text-transform: uppercase; letter-spacing: 0.5px;
+            color:white; 
+            text-decoration:none; 
+            font-weight:600; 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            font-size: 16px; /* Увеличен шрифт */
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-radius: 50px; /* Закругленные блоки */
+            display: inline-block;
+            border: 1px solid transparent;
         }
-        header nav a:hover { color:#00aaff; }
+
+        /* ЭФФЕКТ ПРИПОДНИМАНИЯ И ПОДСВЕТКИ */
+        header nav a:hover { 
+            color: white;
+            background: rgba(0, 170, 255, 0.2);
+            border-color: rgba(0, 170, 255, 0.5);
+            transform: translateY(-5px); /* Приподнимается */
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.3); /* Подсветка снизу */
+        }
 
         /* HERO SECTION */
         .hero {
@@ -82,13 +101,13 @@
             background: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
                 url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2500') no-repeat center;
-            background-size: cover; /* Исправлено: заполнение всей секции */
+            background-size: cover;
             background-attachment: fixed;
             background-color: #050a0f; 
         }
         #products h2 { color: white; }
 
-        /* CONTACT & FORM (MOBILE READY + HOVER EFFECTS) */
+        /* CONTACT SECTION */
         .contact { background: rgba(0, 26, 48, 0.98); color:white; text-align:center; }
         .contact h2 { color: white; }
         
@@ -112,7 +131,6 @@
             transition: all 0.3s ease;
         }
 
-        /* ПОДСВЕТКА СТРОК ПРИ НАВЕДЕНИИ */
         input:hover, textarea:hover { 
             border-color: #00aaff; 
             background: rgba(255, 255, 255, 0.1); 
@@ -146,6 +164,15 @@
             border-bottom: 1px solid #00aaff;
         }
 
+        /* НОВЫЙ СТИЛЬ ДЛЯ ЛОГОТИПА ВНИЗУ */
+        .footer-logo { 
+            height: 150px; /* Фиксированная высота 150px */
+            width: auto; 
+            display: block;
+            margin: 30px auto 0; /* Отступ сверху и центрирование */
+            object-fit: contain; 
+        }
+
         /* FOOTER */
         footer { text-align:center; padding:40px; background:#04070a; color:#777; font-size: 14px; position: relative; z-index: 2; }
 
@@ -155,15 +182,11 @@
             .hero-content h1 { font-size: 34px; }
             .hero-content p { font-size: 18px; }
             h2 { font-size: 28px; }
-            header { padding: 15px; flex-direction: column; }
-            .logo-img { height: 125px; margin-bottom: 10px; }
-            header nav { gap: 10px; justify-content: center; display: flex; flex-wrap: wrap; }
-            header nav a { margin: 0 10px; font-size: 12px; }
+            header { padding: 10px; }
+            header nav { gap: 5px; flex-wrap: wrap; justify-content: center; }
+            header nav a { padding: 8px 12px; font-size: 13px; }
             section { padding: 60px 5%; }
-            
-            form { padding: 0 10px; gap: 10px; }
-            input, textarea { padding: 15px; font-size: 14px; }
-            button { padding: 15px; font-size: 16px; }
+            .footer-logo { height: 150px; } /* Высота сохраняется на мобильных */
         }
     </style>
 </head>
@@ -172,7 +195,6 @@
 <div class="main-bg-layer"></div>
 
 <header>
-    <img src="Logo7.png" alt="KmarinEOOD" class="logo-img">
     <nav>
         <a href="#offer">What We Offer</a>
         <a href="#products">Products</a>
@@ -253,6 +275,7 @@
     <div class="contact-info">
         <p>Email: <a href="mailto:purchase@kmarine.org" class="email-link">purchase@kmarine.org</a></p>
         <p>Phone: +359 89 772 27 01</p>
+        <img src="Logo7.png" alt="KmarinEOOD" class="footer-logo">
     </div>
 </section>
 
@@ -270,7 +293,7 @@
 
     document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
-    /* Обработка отправки формы через Formspree */
+    /* Обработка отправки формы */
     document.getElementById("form").addEventListener("submit", function(e){
         e.preventDefault();
         const btn = this.querySelector('button');
