@@ -19,7 +19,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* BACKGROUND LAYER 1 */
+        /* BACKGROUND LAYER 1 (FIXED) */
         .main-bg-layer {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -27,11 +27,12 @@
             background: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
                 url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') no-repeat center;
-            background-size: contain;
+            background-size: cover; /* Исправлено: теперь картинка на весь экран */
+            background-position: center;
             background-attachment: fixed;
         }
 
-        /* HEADER & NAVIGATION */
+        /* HEADER & NAVIGATION (FIXED LOGO) */
         header {
             position:fixed; top:0; width:100%; z-index:1000;
             background: rgba(0, 32, 63, 0.95); 
@@ -39,7 +40,11 @@
             display:flex; justify-content:space-between; align-items:center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        .logo-img { height: 145px; width: auto; object-fit: contain; }
+        .logo-img { 
+            height: 100px; /* Уменьшили для аккуратности */
+            width: auto; 
+            object-fit: contain; 
+        }
         header nav a { 
             color:white; text-decoration:none; margin-left:25px; 
             font-weight:500; transition:0.3s; font-size: 14px; 
@@ -72,22 +77,21 @@
         .card:hover { transform: translateY(-10px); border-bottom: 5px solid #00aaff; box-shadow: 0 15px 35px rgba(0,43,78,0.12); }
         .card h3 { color: #002b4e; margin-bottom: 15px; font-size: 22px; }
 
-        /* LAYER 2 BACKGROUND (PRODUCTS) */
+        /* LAYER 2 BACKGROUND (PRODUCTS FIXED) */
         #products {
             background: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
                 url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2500') no-repeat center;
-            background-size: contain;
+            background-size: cover; /* Исправлено: заполнение всей секции */
             background-attachment: fixed;
             background-color: #050a0f; 
         }
         #products h2 { color: white; }
 
-        /* CONTACT & FORM */
+        /* CONTACT & FORM (MOBILE READY + HOVER EFFECTS) */
         .contact { background: rgba(0, 26, 48, 0.98); color:white; text-align:center; }
         .contact h2 { color: white; }
         
-        /* Исправленная форма: добавлена ширина 100% */
         form { 
             width: 100%; 
             max-width:700px; 
@@ -97,7 +101,7 @@
         }
         
         input, textarea { 
-            width: 100%; /* Гарантирует, что поля не будут шире экрана */
+            width: 100%;
             padding:18px; 
             border-radius:8px; 
             border: 1px solid rgba(255,255,255,0.1); 
@@ -108,6 +112,7 @@
             transition: all 0.3s ease;
         }
 
+        /* ПОДСВЕТКА СТРОК ПРИ НАВЕДЕНИИ */
         input:hover, textarea:hover { 
             border-color: #00aaff; 
             background: rgba(255, 255, 255, 0.1); 
@@ -154,9 +159,8 @@
             .logo-img { height: 85px; margin-bottom: 10px; }
             header nav { gap: 10px; justify-content: center; display: flex; flex-wrap: wrap; }
             header nav a { margin: 0 10px; font-size: 12px; }
-            section { padding: 60px 5%; } /* Уменьшаем отступы секций на мобильных */
+            section { padding: 60px 5%; }
             
-            /* Фикс для формы на мобильных */
             form { padding: 0 10px; gap: 10px; }
             input, textarea { padding: 15px; font-size: 14px; }
             button { padding: 15px; font-size: 16px; }
@@ -255,6 +259,7 @@
 <footer>© 2026 KmarinEOOD | Marine Technical Supply & Logistics</footer>
 
 <script>
+    /* Анимация появления карточек при прокрутке */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -265,6 +270,7 @@
 
     document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
+    /* Обработка отправки формы через Formspree */
     document.getElementById("form").addEventListener("submit", function(e){
         e.preventDefault();
         const btn = this.querySelector('button');
