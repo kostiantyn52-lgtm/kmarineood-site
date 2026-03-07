@@ -19,7 +19,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* BACKGROUND LAYER 1 */
+        /* BACKGROUND LAYER 1 (FIXED) */
         .main-bg-layer {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -27,44 +27,30 @@
             background: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
                 url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') no-repeat center;
-            background-size: cover;
+            background-size: cover; /* Исправлено: теперь картинка на весь экран */
             background-position: center;
             background-attachment: fixed;
         }
 
-        /* HEADER & NAVIGATION (ОБНОВЛЕННЫЕ СТИЛИ) */
+        /* HEADER & NAVIGATION (FIXED LOGO) */
         header {
             position:fixed; top:0; width:100%; z-index:1000;
             background: rgba(0, 32, 63, 0.95); 
-            padding: 15px 8%; /* Немного уменьшили вертикальный паддинг */
-            display:flex; 
-            justify-content:center; 
-            align-items:center;
+            padding: 10px 8%;
+            display:flex; justify-content:space-between; align-items:center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        header nav {
-            display: flex;
-            align-items: center;
-            gap: 5px; /* Небольшой отступ между блоками */
+        .logo-img { 
+            height: 125px; /* Уменьшили для аккуратности */
+            width: auto; 
+            object-fit: contain; 
         }
         header nav a { 
-            color:white; text-decoration:none; 
-            padding: 10px 20px; /* Паддинг для создания блока */
-            font-weight:600; 
-            transition:all 0.3s ease; /* Плавность для всех свойств */
-            font-size: 16px; /* Увеличили шрифт */
+            color:white; text-decoration:none; margin-left:25px; 
+            font-weight:500; transition:0.3s; font-size: 14px; 
             text-transform: uppercase; letter-spacing: 0.5px;
-            border-radius: 8px; /* Закругленные углы */
-            display: inline-block;
         }
-
-        /* ЭФФЕКТ ПРИ НАВЕДЕНИИ МЫШКИ НА ПУНКТ МЕНЮ */
-        header nav a:hover { 
-            color: white !important; /* Текст остается белым */
-            background-color: #00aaff; /* Голубой фон */
-            transform: translateY(-5px); /* Приподнимание вверх */
-            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4); /* Подсветка тенью */
-        }
+        header nav a:hover { color:#00aaff; }
 
         /* HERO SECTION */
         .hero {
@@ -91,60 +77,73 @@
         .card:hover { transform: translateY(-10px); border-bottom: 5px solid #00aaff; box-shadow: 0 15px 35px rgba(0,43,78,0.12); }
         .card h3 { color: #002b4e; margin-bottom: 15px; font-size: 22px; }
 
-        /* PRODUCTS BACKGROUND */
+        /* LAYER 2 BACKGROUND (PRODUCTS FIXED) */
         #products {
             background: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
                 url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2500') no-repeat center;
-            background-size: cover;
+            background-size: cover; /* Исправлено: заполнение всей секции */
             background-attachment: fixed;
             background-color: #050a0f; 
         }
         #products h2 { color: white; }
 
-        /* CONTACT & FORM */
+        /* CONTACT & FORM (MOBILE READY + HOVER EFFECTS) */
         .contact { background: rgba(0, 26, 48, 0.98); color:white; text-align:center; }
         .contact h2 { color: white; }
-        form { width: 100%; max-width:700px; margin: 40px auto; display:grid; gap:15px; }
+        
+        form { 
+            width: 100%; 
+            max-width:700px; 
+            margin: 40px auto; 
+            display:grid; 
+            gap:15px; 
+        }
+        
         input, textarea { 
-            width: 100%; padding:18px; border-radius:8px; border: 1px solid rgba(255,255,255,0.1); 
-            background: rgba(255,255,255,0.05); color: white; font-family: inherit; 
-            font-size: 16px; transition: all 0.3s ease;
+            width: 100%;
+            padding:18px; 
+            border-radius:8px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            background: rgba(255,255,255,0.05); 
+            color: white; 
+            font-family: inherit; 
+            font-size: 16px; 
+            transition: all 0.3s ease;
         }
+
+        /* ПОДСВЕТКА СТРОК ПРИ НАВЕДЕНИИ */
         input:hover, textarea:hover { 
-            border-color: #00aaff; background: rgba(255, 255, 255, 0.1); 
-            box-shadow: 0 0 15px rgba(0, 170, 255, 0.3); transform: translateY(-2px);
+            border-color: #00aaff; 
+            background: rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
+            transform: translateY(-2px);
         }
+
+        input:focus, textarea:focus { 
+            background: rgba(255,255,255,0.12); 
+            outline: none; 
+            border-color: #00aaff; 
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
         button { 
-            width: 100%; padding:18px; border:none; background:#00aaff; color:white; font-weight:700; 
-            cursor:pointer; border-radius:8px; transition:0.3s; font-size: 18px; text-transform: uppercase;
+            width: 100%;
+            padding:18px; border:none; background:#00aaff; color:white; font-weight:700; 
+            cursor:pointer; border-radius:8px; transition:0.3s; font-size: 18px; 
+            text-transform: uppercase;
         }
         button:hover { background:white; color:#002b4e; transform: scale(1.02); }
 
-        /* СТИЛЬ ДЛЯ ЛОГОТИПА ВНИЗУ (ОБНОВЛЕНО: 150px) */
-        .footer-logo {
-            height: 150px; /* Увеличили высоту */
-            width: auto;
-            display: block;
-            margin: 30px auto 0; /* Отступ сверху и центрирование */
-            object-fit: contain;
+        .email-link {
+            color: #00aaff;
+            text-decoration: none;
+            transition: 0.3s;
+            border-bottom: 1px solid transparent;
         }
-
-        .contact-info { margin-top: 30px; }
-        .email-link { color: #00aaff; text-decoration: none; }
-
-        /* WHATSAPP FLOAT */
-        .whatsapp-float {
-            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
-            background-color: #25d366; color: #FFF; border-radius: 50px;
-            text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 2000; display: flex; align-items: center; justify-content: center;
-            text-decoration: none; transition: all 0.3s ease; animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        .email-link:hover {
+            border-bottom: 1px solid #00aaff;
         }
 
         /* FOOTER */
@@ -152,13 +151,19 @@
 
         /* MOBILE OPTIMIZATION */
         @media(max-width:768px){
-            header { padding: 10px; }
-            header nav { gap: 5px; flex-wrap: wrap; justify-content: center; }
-            header nav a { padding: 8px 15px; font-size: 13px; margin: 0; } /* Уменьшили шрифт и паддинг для мобильных */
+            .main-bg-layer, #products { background-size: cover; background-attachment: scroll; background-position: center top; }
             .hero-content h1 { font-size: 34px; }
+            .hero-content p { font-size: 18px; }
+            h2 { font-size: 28px; }
+            header { padding: 15px; flex-direction: column; }
+            .logo-img { height: 125px; margin-bottom: 10px; }
+            header nav { gap: 10px; justify-content: center; display: flex; flex-wrap: wrap; }
+            header nav a { margin: 0 10px; font-size: 12px; }
             section { padding: 60px 5%; }
-            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-            .footer-logo { height: 150px; } /* Сохраняем 150px на мобильных */
+            
+            form { padding: 0 10px; gap: 10px; }
+            input, textarea { padding: 15px; font-size: 14px; }
+            button { padding: 15px; font-size: 16px; }
         }
     </style>
 </head>
@@ -166,13 +171,8 @@
 
 <div class="main-bg-layer"></div>
 
-<a href="https://wa.me/359897722701" class="whatsapp-float" target="_blank">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-</a>
-
 <header>
+    <img src="Logo7.png" alt="KmarinEOOD" class="logo-img">
     <nav>
         <a href="#offer">What We Offer</a>
         <a href="#products">Products</a>
@@ -202,12 +202,30 @@
 <section id="products">
     <h2>OUR PRODUCTS</h2>
     <div class="grid">
-        <div class="card"><h3>Main & Aux Engines</h3><p>Specialized support for MAN B&W, SULZER, DAIHATSU, YANMAR, AKASAKA, MITSUBISHI, MAN STX.</p></div>
-        <div class="card"><h3>Critical Spares</h3><p>High-quality piston crowns, fuel nozzles, cylinder liners, and bearings for marine diesel engines.</p></div>
-        <div class="card"><h3>Pumps & Purifiers</h3><p>Spares for Westfalia oil purifiers and engine room pumps.</p></div>
-        <div class="card"><h3>Air Compressors</h3><p>Maintenance kits and valves for marine compressors.</p></div>
-        <div class="card"><h3>Automation</h3><p>Electrical components, sensors, and control modules.</p></div>
-        <div class="card"><h3>Deck Machinery</h3><p>Hydraulic parts, mooring winch spares, and crane components.</p></div>
+        <div class="card">
+            <h3>Main & Aux Engines</h3>
+            <p>Specialized support for MAN B&W/STX, SULZER, DAIHATSU, YANMAR, AKASAKA, MITSUBISHI.</p>
+        </div>
+        <div class="card">
+            <h3>Critical Spares</h3>
+            <p>High-quality piston crowns, fuel nozzles, cylinder liners, and bearings for marine diesel engines.</p>
+        </div>
+        <div class="card">
+            <h3>Pumps & Purifiers</h3>
+            <p>Spares for Westfalia oil purifiers and engine room pumps: TAIKO, NANIWA, SHINKO, TAIKOKU, ISHI, SHIN SHIN, SJ-SERIES, ALFA-LAVAL.</p>
+        </div>
+        <div class="card">
+            <h3>Air Compressors</h3>
+            <p>Maintenance kits and valves for marine compressors: YANMAR, TANABE, SPERRE, HATLAPA, HAMWORTHY, TEIKOKU.</p>
+        </div>
+        <div class="card">
+            <h3>Automation</h3>
+            <p>Electrical components, sensors, and control modules for engine management systems.</p>
+        </div>
+        <div class="card">
+            <h3>Deck Machinery</h3>
+            <p>Hydraulic parts, mooring winch spares, and crane components.</p>
+        </div>
     </div>
 </section>
 
@@ -235,13 +253,13 @@
     <div class="contact-info">
         <p>Email: <a href="mailto:purchase@kmarine.org" class="email-link">purchase@kmarine.org</a></p>
         <p>Phone: +359 89 772 27 01</p>
-        <img src="Logo7.png" alt="KmarinEOOD" class="footer-logo">
     </div>
 </section>
 
 <footer>© 2026 KmarinEOOD | Marine Technical Supply & Logistics</footer>
 
 <script>
+    /* Анимация появления карточек при прокрутке */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -249,13 +267,16 @@
             }
         });
     }, { threshold: 0.1 });
+
     document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
+    /* Обработка отправки формы через Formspree */
     document.getElementById("form").addEventListener("submit", function(e){
         e.preventDefault();
         const btn = this.querySelector('button');
         btn.textContent = "SENDING...";
         btn.disabled = true;
+
         fetch(this.action, {
             method: this.method,
             body: new FormData(this),
@@ -265,7 +286,8 @@
                 this.style.display="none";
                 document.getElementById("success").style.display="block";
             } else {
-                btn.textContent = "SEND REQUEST"; btn.disabled = false;
+                btn.textContent = "SEND REQUEST";
+                btn.disabled = false;
                 alert("Submission failed. Please try again.");
             }
         });
