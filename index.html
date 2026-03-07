@@ -39,7 +39,6 @@
             display:flex; justify-content:space-between; align-items:center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        /* ЛОГОТИП ОБНОВЛЕН ДО logo2.png */
         .logo-img { height: 125px; width: auto; object-fit: contain; }
         header nav a { 
             color:white; text-decoration:none; margin-left:25px; 
@@ -100,6 +99,17 @@
             text-transform: uppercase;
         }
         button:hover { background:white; color:#002b4e; transform: scale(1.02); }
+
+        /* СТИЛЬ ДЛЯ ПОЧТЫ (Подчеркивание при наведении) */
+        .email-link {
+            color: #00aaff;
+            text-decoration: none;
+            transition: 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+        .email-link:hover {
+            border-bottom: 1px solid #00aaff;
+        }
 
         /* FOOTER */
         footer { text-align:center; padding:40px; background:#04070a; color:#777; font-size: 14px; position: relative; z-index: 2; }
@@ -202,7 +212,7 @@
         <button type="submit">SEND REQUEST</button>
     </form>
     <div class="contact-info">
-        <p>Email: <a href="mailto:purchase@kmarine.org" style="color:#00aaff; text-decoration:none;">purchase@kmarine.org</a></p>
+        <p>Email: <a href="mailto:purchase@kmarine.org" class="email-link">purchase@kmarine.org</a></p>
         <p>Phone: +359 89 772 27 01</p>
     </div>
 </section>
@@ -212,7 +222,9 @@
 <script>
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
         });
     }, { threshold: 0.1 });
 
