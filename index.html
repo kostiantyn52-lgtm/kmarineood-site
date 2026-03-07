@@ -15,7 +15,7 @@
             color:#333; 
             line-height:1.6; 
             background-color: #001a30;
-            overflow-x: hidden; /* Защита от горизонтальной прокрутки */
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -63,7 +63,6 @@
             will-change: transform, background, box-shadow;
         }
 
-        /* ЭФФЕКТ ПРИПОДНИМАНИЯ И ПОДСВЕТКИ */
         header nav a:hover { 
             color: white;
             background: rgba(0, 170, 255, 0.2);
@@ -138,14 +137,14 @@
         .email-link { color: #00aaff; text-decoration: none; transition: 0.3s; border-bottom: 1px solid transparent; }
         .email-link:hover { border-bottom: 1px solid #00aaff; }
 
-        /* ЛОГОТИП ВНИЗУ */
+        /* ИСПРАВЛЕННЫЙ ЛОГОТИП ВНИЗУ */
         .footer-logo { 
             height: 150px; 
             width: auto; 
+            max-width: 100%; /* ГЛАВНОЕ ИСПРАВЛЕНИЕ: не дает картинке выходить за края экрана */
             display: block; 
             margin: 30px auto 0; 
             object-fit: contain; 
-            loading: lazy;
         }
 
         /* WHATSAPP STYLES */
@@ -168,7 +167,7 @@
         /* FOOTER */
         footer { text-align:center; padding:40px; background:#04070a; color:#777; font-size: 14px; position: relative; z-index: 2; }
 
-        /* MOBILE OPTIMIZATION - FIXED STRIPE ISSUE */
+        /* MOBILE OPTIMIZATION */
         @media(max-width:768px){
             .main-bg-layer, #products { 
                 background-attachment: scroll !important; 
@@ -181,14 +180,12 @@
             header nav { gap: 5px; flex-wrap: wrap; justify-content: center; }
             header nav a { padding: 8px 12px; font-size: 13px; }
             
-            /* Исправление сетки, чтобы не вылетала вправо */
             .grid { 
                 grid-template-columns: 1fr !important; 
                 gap: 20px;
             }
             
             section { padding: 60px 5%; }
-            .footer-logo { height: 150px; }
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; }
         }
     </style>
@@ -276,19 +273,17 @@
 <footer>© 2026 KmarinEOOD | Marine Technical Supply & Logistics</footer>
 
 <script>
-    /* Анимация появления карточек при прокрутке */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); /* Оптимизация: перестаем следить */
+                observer.unobserve(entry.target); 
             }
         });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
-    /* Обработка отправки формы */
     document.getElementById("form").addEventListener("submit", function(e){
         e.preventDefault();
         const btn = this.querySelector('button');
