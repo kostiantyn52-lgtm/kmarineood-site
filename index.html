@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KmarinEOOD | Marine Technical Supply & Logistics</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* CSS RESET & BASE */
         * { margin:0; padding:0; box-sizing:border-box; }
@@ -38,7 +39,7 @@
             background: rgba(0, 32, 63, 0.95); 
             padding: 15px 8%;
             display:flex; 
-            justify-content: center; /* Центрируем меню, так как логотипа больше нет вверху */
+            justify-content: center; 
             align-items:center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
@@ -53,22 +54,21 @@
             text-decoration:none; 
             font-weight:600; 
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-            font-size: 16px; /* Увеличен шрифт */
+            font-size: 16px; 
             text-transform: uppercase; 
             letter-spacing: 1px;
             padding: 10px 20px;
-            border-radius: 50px; /* Закругленные блоки */
+            border-radius: 50px; 
             display: inline-block;
             border: 1px solid transparent;
         }
 
-        /* ЭФФЕКТ ПРИПОДНИМАНИЯ И ПОДСВЕТКИ */
         header nav a:hover { 
             color: white;
             background: rgba(0, 170, 255, 0.2);
             border-color: rgba(0, 170, 255, 0.5);
-            transform: translateY(-5px); /* Приподнимается */
-            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.3); /* Подсветка снизу */
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.3); 
         }
 
         /* HERO SECTION */
@@ -94,9 +94,8 @@
         }
         .card.visible { opacity: 1; transform: translateY(0); }
         .card:hover { transform: translateY(-10px); border-bottom: 5px solid #00aaff; box-shadow: 0 15px 35px rgba(0,43,78,0.12); }
-        .card h3 { color: #002b4e; margin-bottom: 15px; font-size: 22px; }
 
-        /* LAYER 2 BACKGROUND (PRODUCTS FIXED) */
+        /* PRODUCTS SECTION BACKGROUND */
         #products {
             background: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
@@ -112,65 +111,76 @@
         .contact h2 { color: white; }
         
         form { 
-            width: 100%; 
-            max-width:700px; 
-            margin: 40px auto; 
-            display:grid; 
-            gap:15px; 
+            width: 100%; max-width:700px; margin: 40px auto; display:grid; gap:15px; 
         }
         
         input, textarea { 
-            width: 100%;
-            padding:18px; 
-            border-radius:8px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            background: rgba(255,255,255,0.05); 
-            color: white; 
-            font-family: inherit; 
-            font-size: 16px; 
-            transition: all 0.3s ease;
+            width: 100%; padding:18px; border-radius:8px; border: 1px solid rgba(255,255,255,0.1); 
+            background: rgba(255,255,255,0.05); color: white; font-family: inherit; font-size: 16px; transition: all 0.3s ease;
         }
 
         input:hover, textarea:hover { 
-            border-color: #00aaff; 
-            background: rgba(255, 255, 255, 0.1); 
-            box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        input:focus, textarea:focus { 
-            background: rgba(255,255,255,0.12); 
-            outline: none; 
-            border-color: #00aaff; 
-            box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
-            transform: translateY(-2px);
+            border-color: #00aaff; background: rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.3); transform: translateY(-2px);
         }
 
         button { 
-            width: 100%;
-            padding:18px; border:none; background:#00aaff; color:white; font-weight:700; 
-            cursor:pointer; border-radius:8px; transition:0.3s; font-size: 18px; 
-            text-transform: uppercase;
+            width: 100%; padding:18px; border:none; background:#00aaff; color:white; font-weight:700; 
+            cursor:pointer; border-radius:8px; transition:0.3s; font-size: 18px; text-transform: uppercase;
         }
         button:hover { background:white; color:#002b4e; transform: scale(1.02); }
 
-        .email-link {
-            color: #00aaff;
-            text-decoration: none;
-            transition: 0.3s;
-            border-bottom: 1px solid transparent;
-        }
-        .email-link:hover {
-            border-bottom: 1px solid #00aaff;
-        }
+        /* WHATSAPP & CONTACT STYLES */
+        .contact-info { margin-top: 30px; }
+        .contact-info p { margin-bottom: 10px; font-size: 18px; }
 
-        /* НОВЫЙ СТИЛЬ ДЛЯ ЛОГОТИПА ВНИЗУ */
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            color: #25D366;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-left: 10px;
+        }
+        .whatsapp-link:hover { transform: scale(1.1); color: #128C7E; }
+        .whatsapp-link i { font-size: 24px; margin-right: 8px; }
+
+        .email-link { color: #00aaff; text-decoration: none; transition: 0.3s; border-bottom: 1px solid transparent; }
+        .email-link:hover { border-bottom: 1px solid #00aaff; }
+
+        /* ЛОГОТИП ВНИЗУ */
         .footer-logo { 
-            height: 150px; /* Фиксированная высота 150px */
+            height: 150px; 
             width: auto; 
             display: block;
-            margin: 30px auto 0; /* Отступ сверху и центрирование */
+            margin: 40px auto 0; 
             object-fit: contain; 
+        }
+
+        /* ПЛАВАЮЩАЯ КНОПКА WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
         }
 
         /* FOOTER */
@@ -178,21 +188,20 @@
 
         /* MOBILE OPTIMIZATION */
         @media(max-width:768px){
-            .main-bg-layer, #products { background-size: cover; background-attachment: scroll; background-position: center top; }
             .hero-content h1 { font-size: 34px; }
-            .hero-content p { font-size: 18px; }
-            h2 { font-size: 28px; }
-            header { padding: 10px; }
-            header nav { gap: 5px; flex-wrap: wrap; justify-content: center; }
             header nav a { padding: 8px 12px; font-size: 13px; }
-            section { padding: 60px 5%; }
-            .footer-logo { height: 150px; } /* Высота сохраняется на мобильных */
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
+            .footer-logo { height: 150px; }
         }
     </style>
 </head>
 <body>
 
 <div class="main-bg-layer"></div>
+
+<a href="https://wa.me/359897722701" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 <header>
     <nav>
@@ -224,43 +233,11 @@
 <section id="products">
     <h2>OUR PRODUCTS</h2>
     <div class="grid">
-        <div class="card">
-            <h3>Main & Aux Engines</h3>
-            <p>Specialized support for MAN B&W/STX, SULZER, DAIHATSU, YANMAR, AKASAKA, MITSUBISHI.</p>
-        </div>
-        <div class="card">
-            <h3>Critical Spares</h3>
-            <p>High-quality piston crowns, fuel nozzles, cylinder liners, and bearings for marine diesel engines.</p>
-        </div>
-        <div class="card">
-            <h3>Pumps & Purifiers</h3>
-            <p>Spares for Westfalia oil purifiers and engine room pumps: TAIKO, NANIWA, SHINKO, TAIKOKU, ISHI, SHIN SHIN, SJ-SERIES, ALFA-LAVAL.</p>
-        </div>
-        <div class="card">
-            <h3>Air Compressors</h3>
-            <p>Maintenance kits and valves for marine compressors: YANMAR, TANABE, SPERRE, HATLAPA, HAMWORTHY, TEIKOKU.</p>
-        </div>
-        <div class="card">
-            <h3>Automation</h3>
-            <p>Electrical components, sensors, and control modules for engine management systems.</p>
-        </div>
-        <div class="card">
-            <h3>Deck Machinery</h3>
-            <p>Hydraulic parts, mooring winch spares, and crane components.</p>
-        </div>
+        <div class="card"><h3>Main & Aux Engines</h3><p>Specialized support for MAN B&W/STX, SULZER, DAIHATSU, YANMAR, AKASAKA, MITSUBISHI.</p></div>
+        <div class="card"><h3>Critical Spares</h3><p>High-quality piston crowns, fuel nozzles, cylinder liners, and bearings for marine diesel engines.</p></div>
+        <div class="card"><h3>Pumps & Purifiers</h3><p>Spares for Westfalia oil purifiers and engine room pumps: TAIKO, NANIWA, SHINKO, TAIKOKU, ISHI, SHIN SHIN, SJ-SERIES, ALFA-LAVAL.</p></div>
     </div>
 </section>
-
-<div class="content-section">
-    <section id="logistics">
-        <h2>GLOBAL LOGISTICS</h2>
-        <div class="grid">
-            <div class="card"><h3>Express Delivery</h3><p>Urgent air freight for critical spare parts via DHL, FedEx, and UPS.</p></div>
-            <div class="card"><h3>Shipyard Support</h3><p>Consolidated shipments and direct delivery to major shipyards worldwide.</p></div>
-            <div class="card"><h3>Marine Logistics</h3><p>Reliable door-to-deck delivery service in all major international ports.</p></div>
-        </div>
-    </section>
-</div>
 
 <section id="contact" class="contact">
     <h2>SEND YOUR INQUIRY</h2>
@@ -268,13 +245,19 @@
     <form id="form" action="https://formspree.io/f/mjgavall" method="POST">
         <input type="text" name="name" placeholder="Contact Person" required>
         <input type="email" name="email" placeholder="Your Email" required>
-        <input type="text" name="vessel" placeholder="Vessel Name / IMO">
         <textarea name="message" rows="5" placeholder="Required parts list..." required></textarea>
         <button type="submit">SEND REQUEST</button>
     </form>
+    
     <div class="contact-info">
         <p>Email: <a href="mailto:purchase@kmarine.org" class="email-link">purchase@kmarine.org</a></p>
-        <p>Phone: +359 89 772 27 01</p>
+        <p>
+            Phone: +359 89 772 27 01 
+            <a href="https://wa.me/359897722701" class="whatsapp-link" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </p>
+        
         <img src="Logo7.png" alt="KmarinEOOD" class="footer-logo">
     </div>
 </section>
@@ -282,24 +265,18 @@
 <footer>© 2026 KmarinEOOD | Marine Technical Supply & Logistics</footer>
 
 <script>
-    /* Анимация появления карточек при прокрутке */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
-    /* Обработка отправки формы */
     document.getElementById("form").addEventListener("submit", function(e){
         e.preventDefault();
         const btn = this.querySelector('button');
         btn.textContent = "SENDING...";
         btn.disabled = true;
-
         fetch(this.action, {
             method: this.method,
             body: new FormData(this),
@@ -308,10 +285,6 @@
             if(res.ok){
                 this.style.display="none";
                 document.getElementById("success").style.display="block";
-            } else {
-                btn.textContent = "SEND REQUEST";
-                btn.disabled = false;
-                alert("Submission failed. Please try again.");
             }
         });
     });
