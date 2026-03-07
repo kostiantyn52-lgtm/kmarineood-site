@@ -39,7 +39,7 @@
             display:flex; justify-content:space-between; align-items:center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        .logo-img { height: 145px; width: auto; object-fit: contain; }
+        .logo-img { height: 125px; width: auto; object-fit: contain; }
         header nav a { 
             color:white; text-decoration:none; margin-left:25px; 
             font-weight:500; transition:0.3s; font-size: 14px; 
@@ -86,24 +86,35 @@
         /* CONTACT & FORM */
         .contact { background: rgba(0, 26, 48, 0.98); color:white; text-align:center; }
         .contact h2 { color: white; }
-        form { max-width:700px; margin: 40px auto; display:grid; gap:15px; }
         
-        /* ОБНОВЛЕННЫЕ ПОЛЯ ВВОДА */
+        /* Исправленная форма: добавлена ширина 100% */
+        form { 
+            width: 100%; 
+            max-width:700px; 
+            margin: 40px auto; 
+            display:grid; 
+            gap:15px; 
+        }
+        
         input, textarea { 
-            padding:18px; border-radius:8px; border: 1px solid rgba(255,255,255,0.1); 
-            background: rgba(255,255,255,0.05); color: white; font-family: inherit; 
-            font-size: 16px; transition: all 0.3s ease; /* Плавный переход для всех свойств */
+            width: 100%; /* Гарантирует, что поля не будут шире экрана */
+            padding:18px; 
+            border-radius:8px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            background: rgba(255,255,255,0.05); 
+            color: white; 
+            font-family: inherit; 
+            font-size: 16px; 
+            transition: all 0.3s ease;
         }
 
-        /* ЭФФЕКТ ПРИ НАВЕДЕНИИ МЫШКИ */
         input:hover, textarea:hover { 
             border-color: #00aaff; 
             background: rgba(255, 255, 255, 0.1); 
             box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
-            transform: translateY(-2px); /* Легкий подъем вверх */
+            transform: translateY(-2px);
         }
 
-        /* ЭФФЕКТ ПРИ ФОКУСЕ (когда начинаешь писать) */
         input:focus, textarea:focus { 
             background: rgba(255,255,255,0.12); 
             outline: none; 
@@ -113,13 +124,13 @@
         }
 
         button { 
+            width: 100%;
             padding:18px; border:none; background:#00aaff; color:white; font-weight:700; 
             cursor:pointer; border-radius:8px; transition:0.3s; font-size: 18px; 
             text-transform: uppercase;
         }
         button:hover { background:white; color:#002b4e; transform: scale(1.02); }
 
-        /* СТИЛЬ ДЛЯ ПОЧТЫ */
         .email-link {
             color: #00aaff;
             text-decoration: none;
@@ -139,11 +150,16 @@
             .hero-content h1 { font-size: 34px; }
             .hero-content p { font-size: 18px; }
             h2 { font-size: 28px; }
-            header { padding: 10px; flex-direction: column; }
-            .logo-img { height: 75px; }
-            header nav { margin-top: 10px; gap: 5px; justify-content: center; display: flex; flex-wrap: wrap; }
-            header nav a { margin: 0 8px; font-size: 11px; }
-            section { padding: 60px 5%; }
+            header { padding: 15px; flex-direction: column; }
+            .logo-img { height: 85px; margin-bottom: 10px; }
+            header nav { gap: 10px; justify-content: center; display: flex; flex-wrap: wrap; }
+            header nav a { margin: 0 10px; font-size: 12px; }
+            section { padding: 60px 5%; } /* Уменьшаем отступы секций на мобильных */
+            
+            /* Фикс для формы на мобильных */
+            form { padding: 0 10px; gap: 10px; }
+            input, textarea { padding: 15px; font-size: 14px; }
+            button { padding: 15px; font-size: 16px; }
         }
     </style>
 </head>
