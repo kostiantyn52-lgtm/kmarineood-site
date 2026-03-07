@@ -39,6 +39,7 @@
             display:flex; justify-content:space-between; align-items:center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
+        /* ЛОГОТИП ОБНОВЛЕН ДО logo2.png */
         .logo-img { height: 125px; width: auto; object-fit: contain; }
         header nav a { 
             color:white; text-decoration:none; margin-left:25px; 
@@ -72,7 +73,7 @@
         .card:hover { transform: translateY(-10px); border-bottom: 5px solid #00aaff; box-shadow: 0 15px 35px rgba(0,43,78,0.12); }
         .card h3 { color: #002b4e; margin-bottom: 15px; font-size: 22px; }
 
-        /* PRODUCT SECTION BACKGROUND (LAYER 2) */
+        /* LAYER 2 BACKGROUND (PRODUCTS) */
         #products {
             background: 
                 linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
@@ -154,7 +155,7 @@
     <div class="grid">
         <div class="card">
             <h3>Main & Aux Engines</h3>
-            <p>Specialized support for MAN B&W: SULZER, MAN B&W, DAIHATSU, YANMAR, AKASAKA, MITSUBISHI, MAN STX.</p>
+            <p>Specialized support for MAN B&W, SULZER, DAIHATSU, YANMAR, AKASAKA, MITSUBISHI, MAN STX.</p>
         </div>
         <div class="card">
             <h3>Critical Spares</h3>
@@ -209,18 +210,14 @@
 <footer>© 2026 KmarinEOOD | Marine Technical Supply & Logistics</footer>
 
 <script>
-    // Intersection Observer for card animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
-    // Form Handling
     document.getElementById("form").addEventListener("submit", function(e){
         e.preventDefault();
         const btn = this.querySelector('button');
