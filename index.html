@@ -6,84 +6,114 @@
     <title>KmarinEOOD | Marine Technical Supply & Logistics</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* BASE SETUP */
+        /* CSS RESET & BASE */
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior: smooth; }
+        
         body { 
-            font-family:'Poppins', sans-serif; color:#333; line-height:1.6; 
-            background-color: #001a30; overflow-x: hidden; -webkit-font-smoothing: antialiased;
+            font-family:'Poppins', sans-serif; 
+            color:#333; 
+            line-height:1.6; 
+            background-color: #001a30;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* FIXED BACKGROUND */
+        /* BACKGROUND LAYER 1 */
         .main-bg-layer {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
-                        url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') no-repeat center;
-            background-size: cover; background-attachment: fixed;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            background: 
+                linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
+                url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') no-repeat center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        /* HEADER NAVIGATION */
+        /* HEADER & NAVIGATION (ОБНОВЛЕННЫЕ СТИЛИ) */
         header {
             position:fixed; top:0; width:100%; z-index:1000;
-            background: rgba(0, 32, 63, 0.95); padding: 15px 5%;
-            display:flex; justify-content:center; align-items:center;
+            background: rgba(0, 32, 63, 0.95); 
+            padding: 15px 8%; /* Немного уменьшили вертикальный паддинг */
+            display:flex; 
+            justify-content:center; 
+            align-items:center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        header nav { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-        header nav a { 
-            color:white; text-decoration:none; padding: 10px 20px; font-weight:600; 
-            transition: 0.3s ease; font-size: 16px; text-transform: uppercase; 
-            letter-spacing: 0.5px; border-radius: 8px;
+        header nav {
+            display: flex;
+            align-items: center;
+            gap: 5px; /* Небольшой отступ между блоками */
         }
-        header nav a:hover { 
-            background-color: #00aaff; transform: translateY(-3px); 
-            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
+        header nav a { 
+            color:white; text-decoration:none; 
+            padding: 10px 20px; /* Паддинг для создания блока */
+            font-weight:600; 
+            transition:all 0.3s ease; /* Плавность для всех свойств */
+            font-size: 16px; /* Увеличили шрифт */
+            text-transform: uppercase; letter-spacing: 0.5px;
+            border-radius: 8px; /* Закругленные углы */
+            display: inline-block;
         }
 
-        /* HERO */
+        /* ЭФФЕКТ ПРИ НАВЕДЕНИИ МЫШКИ НА ПУНКТ МЕНЮ */
+        header nav a:hover { 
+            color: white !important; /* Текст остается белым */
+            background-color: #00aaff; /* Голубой фон */
+            transform: translateY(-5px); /* Приподнимание вверх */
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4); /* Подсветка тенью */
+        }
+
+        /* HERO SECTION */
         .hero {
             height:100vh; display:flex; align-items:center; justify-content:center; 
             text-align:center; color:white; position: relative; z-index: 1;
         }
-        .hero-content h1 { font-size: clamp(34px, 8vw, 70px); text-transform: uppercase; text-shadow: 0 4px 15px rgba(0,0,0,0.6); }
-        .hero-content p { font-size: clamp(16px, 3vw, 24px); font-weight: 300; margin-top: 10px; }
+        .hero-content h1 { font-size: 70px; text-transform: uppercase; text-shadow: 0 4px 15px rgba(0,0,0,0.6); line-height: 1.1; }
+        .hero-content p { font-size: 24px; font-weight: 300; text-shadow: 0 2px 8px rgba(0,0,0,0.5); margin-top: 10px; }
 
-        /* SECTIONS */
-        section { padding: 80px 10%; position: relative; z-index: 1; }
+        /* SECTIONS COMMON */
+        section { padding: 100px 10%; position: relative; z-index: 1; }
         .content-section { background: rgba(255, 255, 255, 0.95); }
-        h2 { text-align:center; margin-bottom:40px; font-size:32px; color:#002b4e; text-transform: uppercase; letter-spacing: 2px; }
-        h2::after { content: ''; display: block; width: 60px; height: 4px; background: #00aaff; margin: 15px auto; }
+        h2 { text-align:center; margin-bottom:50px; font-size:36px; color:#002b4e; text-transform: uppercase; letter-spacing: 2px; }
+        h2::after { content: ''; display: block; width: 80px; height: 4px; background: #00aaff; margin: 15px auto; }
 
-        /* GRID SYSTEM */
-        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+        /* GRID & CARDS */
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
         .card { 
-            background: white; padding: 30px; border-radius: 15px; 
+            background: white; padding: 40px; border-radius: 15px; 
             box-shadow: 0 10px 25px rgba(0,43,78,0.06); transition: 0.3s ease;
             opacity: 0; transform: translateY(20px); border: 1px solid #eee;
         }
         .card.visible { opacity: 1; transform: translateY(0); }
         .card:hover { transform: translateY(-10px); border-bottom: 5px solid #00aaff; box-shadow: 0 15px 35px rgba(0,43,78,0.12); }
-        .card h3 { color: #002b4e; margin-bottom: 15px; }
+        .card h3 { color: #002b4e; margin-bottom: 15px; font-size: 22px; }
 
-        /* PRODUCTS BG */
+        /* PRODUCTS BACKGROUND */
         #products {
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,26,48,0.5) 100%),
-                        url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2500') no-repeat center;
-            background-size: cover; background-attachment: fixed; color: white;
+            background: 
+                linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,26,48,0.4) 100%),
+                url('https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=2500') no-repeat center;
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: #050a0f; 
         }
         #products h2 { color: white; }
 
-        /* CONTACT FORM */
+        /* CONTACT & FORM */
         .contact { background: rgba(0, 26, 48, 0.98); color:white; text-align:center; }
         .contact h2 { color: white; }
         form { width: 100%; max-width:700px; margin: 40px auto; display:grid; gap:15px; }
         input, textarea { 
             width: 100%; padding:18px; border-radius:8px; border: 1px solid rgba(255,255,255,0.1); 
-            background: rgba(255,255,255,0.05); color: white; font-family: inherit; font-size: 16px; transition: 0.3s;
+            background: rgba(255,255,255,0.05); color: white; font-family: inherit; 
+            font-size: 16px; transition: all 0.3s ease;
         }
-        input:hover, textarea:hover, input:focus, textarea:focus { 
+        input:hover, textarea:hover { 
             border-color: #00aaff; background: rgba(255, 255, 255, 0.1); 
-            box-shadow: 0 0 15px rgba(0, 170, 255, 0.3); transform: translateY(-2px); outline: none;
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.3); transform: translateY(-2px);
         }
         button { 
             width: 100%; padding:18px; border:none; background:#00aaff; color:white; font-weight:700; 
@@ -91,20 +121,26 @@
         }
         button:hover { background:white; color:#002b4e; transform: scale(1.02); }
 
-        /* FOOTER LOGO & INFO */
+        /* СТИЛЬ ДЛЯ ЛОГОТИПА ВНИЗУ (ОБНОВЛЕНО: 150px) */
+        .footer-logo {
+            height: 150px; /* Увеличили высоту */
+            width: auto;
+            display: block;
+            margin: 30px auto 0; /* Отступ сверху и центрирование */
+            object-fit: contain;
+        }
+
         .contact-info { margin-top: 30px; }
-        .email-link { color: #00aaff; text-decoration: none; font-weight: 500; }
-        .footer-logo { height: 150px; width: auto; display: block; margin: 30px auto 0; object-fit: contain; }
+        .email-link { color: #00aaff; text-decoration: none; }
 
         /* WHATSAPP FLOAT */
         .whatsapp-float {
-            position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px;
-            background-color: #25d366; color: white; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 2px 5px 15px rgba(0,0,0,0.3); z-index: 2000; transition: 0.3s;
-            animation: pulse 2s infinite;
+            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
+            background-color: #25d366; color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 2000; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: all 0.3s ease; animation: pulse 2s infinite;
         }
-        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -112,14 +148,17 @@
         }
 
         /* FOOTER */
-        footer { text-align:center; padding:30px; background:#04070a; color:#777; font-size: 13px; position: relative; z-index: 2; }
+        footer { text-align:center; padding:40px; background:#04070a; color:#777; font-size: 14px; position: relative; z-index: 2; }
 
-        /* MOBILE FIXES */
+        /* MOBILE OPTIMIZATION */
         @media(max-width:768px){
+            header { padding: 10px; }
+            header nav { gap: 5px; flex-wrap: wrap; justify-content: center; }
+            header nav a { padding: 8px 15px; font-size: 13px; margin: 0; } /* Уменьшили шрифт и паддинг для мобильных */
+            .hero-content h1 { font-size: 34px; }
             section { padding: 60px 5%; }
-            header nav a { padding: 8px 12px; font-size: 13px; }
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-            .main-bg-layer, #products { background-attachment: scroll; } /* Фикс для производительности мобильных */
+            .footer-logo { height: 150px; } /* Сохраняем 150px на мобильных */
         }
     </style>
 </head>
@@ -128,7 +167,9 @@
 <div class="main-bg-layer"></div>
 
 <a href="https://wa.me/359897722701" class="whatsapp-float" target="_blank">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
 </a>
 
 <header>
@@ -151,9 +192,9 @@
     <section id="offer">
         <h2>WHAT WE OFFER</h2>
         <div class="grid">
-            <div class="card"><h3>Ship Spare Parts</h3><p>Professional sourcing for main/aux engines and onboard machinery.</p></div>
-            <div class="card"><h3>Technical Supply</h3><p>Equipment from trusted manufacturers with full certification.</p></div>
-            <div class="card"><h3>Fast Response</h3><p>Immediate identification and response to technical inquiries.</p></div>
+            <div class="card"><h3>Ship Spare Parts</h3><p>Professional sourcing of marine spare parts for main engines, auxiliary engines, and onboard machinery.</p></div>
+            <div class="card"><h3>Technical Supply</h3><p>Supply of marine equipment and engineering components from trusted manufacturers.</p></div>
+            <div class="card"><h3>Fast Response</h3><p>Immediate response to technical inquiries and accurate spare parts identification.</p></div>
         </div>
     </section>
 </div>
@@ -161,9 +202,12 @@
 <section id="products">
     <h2>OUR PRODUCTS</h2>
     <div class="grid">
-        <div class="card"><h3>Main & Aux Engines</h3><p>MAN B&W, SULZER, YANMAR, MITSUBISHI, MAN STX support.</p></div>
-        <div class="card"><h3>Critical Spares</h3><p>Piston crowns, fuel nozzles, cylinder liners with IMA markings.</p></div>
-        <div class="card"><h3>Pumps & Purifiers</h3><p>Spares for Westfalia, TAIKO, NANIWA, and ALFA-LAVAL.</p></div>
+        <div class="card"><h3>Main & Aux Engines</h3><p>Specialized support for MAN B&W, SULZER, DAIHATSU, YANMAR, AKASAKA, MITSUBISHI, MAN STX.</p></div>
+        <div class="card"><h3>Critical Spares</h3><p>High-quality piston crowns, fuel nozzles, cylinder liners, and bearings for marine diesel engines.</p></div>
+        <div class="card"><h3>Pumps & Purifiers</h3><p>Spares for Westfalia oil purifiers and engine room pumps.</p></div>
+        <div class="card"><h3>Air Compressors</h3><p>Maintenance kits and valves for marine compressors.</p></div>
+        <div class="card"><h3>Automation</h3><p>Electrical components, sensors, and control modules.</p></div>
+        <div class="card"><h3>Deck Machinery</h3><p>Hydraulic parts, mooring winch spares, and crane components.</p></div>
     </div>
 </section>
 
@@ -171,16 +215,16 @@
     <section id="logistics">
         <h2>GLOBAL LOGISTICS</h2>
         <div class="grid">
-            <div class="card"><h3>Express Delivery</h3><p>Urgent air freight via DHL, FedEx, and UPS.</p></div>
-            <div class="card"><h3>Shipyard Support</h3><p>Direct delivery to major shipyards worldwide.</p></div>
-            <div class="card"><h3>Marine Logistics</h3><p>Reliable door-to-deck service in international ports.</p></div>
+            <div class="card"><h3>Express Delivery</h3><p>Urgent air freight for critical spare parts via DHL, FedEx, and UPS.</p></div>
+            <div class="card"><h3>Shipyard Support</h3><p>Consolidated shipments and direct delivery to major shipyards worldwide.</p></div>
+            <div class="card"><h3>Marine Logistics</h3><p>Reliable door-to-deck delivery service in all major international ports.</p></div>
         </div>
     </section>
 </div>
 
 <section id="contact" class="contact">
     <h2>SEND YOUR INQUIRY</h2>
-    <div id="success" style="display:none; padding: 20px; color: #00aaff; font-weight: bold;">Thank you! We will contact you shortly.</div>
+    <div id="success" style="display:none; padding: 20px; color: #00aaff; font-weight: bold;"><strong>Thank you!</strong> We will contact you shortly.</div>
     <form id="form" action="https://formspree.io/f/mjgavall" method="POST">
         <input type="text" name="name" placeholder="Contact Person" required>
         <input type="email" name="email" placeholder="Your Email" required>
@@ -198,19 +242,20 @@
 <footer>© 2026 KmarinEOOD | Marine Technical Supply & Logistics</footer>
 
 <script>
-    // Animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
         });
     }, { threshold: 0.1 });
     document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
-    // Form Handling
     document.getElementById("form").addEventListener("submit", function(e){
         e.preventDefault();
         const btn = this.querySelector('button');
-        btn.textContent = "SENDING..."; btn.disabled = true;
+        btn.textContent = "SENDING...";
+        btn.disabled = true;
         fetch(this.action, {
             method: this.method,
             body: new FormData(this),
@@ -221,7 +266,7 @@
                 document.getElementById("success").style.display="block";
             } else {
                 btn.textContent = "SEND REQUEST"; btn.disabled = false;
-                alert("Error. Please try again.");
+                alert("Submission failed. Please try again.");
             }
         });
     });
