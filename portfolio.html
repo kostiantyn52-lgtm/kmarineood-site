@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | KmarinEOOD</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family:'Poppins', sans-serif;
+            color:#fff;
+            background:#001a30;
+        }
+
+        .main-bg-layer {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6)),
+                url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') center/cover no-repeat;
+        }
+
+        header {
+            position:fixed; top:0; width:100%;
+            background: rgba(0, 32, 63, 0.95);
+            padding: 15px;
+            text-align:center;
+        }
+
+        header a {
+            color:white;
+            text-decoration:none;
+            margin:0 15px;
+            font-weight:600;
+        }
+
+        section {
+            padding:120px 10% 80px;
+        }
+
+        h1 {
+            text-align:center;
+            font-size:48px;
+            margin-bottom:50px;
+        }
+
+        .grid {
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap:30px;
+        }
+
+        .item {
+            background: rgba(255,255,255,0.05);
+            border-radius:12px;
+            overflow:hidden;
+            transition:0.3s;
+        }
+
+        .item:hover {
+            transform: translateY(-10px);
+        }
+
+        .item img {
+            width:100%;
+            height:250px;
+            object-fit:cover;
+        }
+
+        .item p {
+            padding:15px;
+        }
+
+        .back {
+            display:block;
+            text-align:center;
+            margin-top:40px;
+            color:#00aaff;
+            text-decoration:none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="main-bg-layer"></div>
+
+<header>
+    <a href="index.html">Home</a>
+</header>
+
+<section>
+    <h1>Our Portfolio</h1>
+
+    <div class="grid">
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+            <p>Spare parts delivery to vessel</p>
+        </div>
+
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1470123808288-1e59739d9357">
+            <p>Engine maintenance support</p>
+        </div>
+
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
+            <p>Global logistics operations</p>
+        </div>
+
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738">
+            <p>Marine equipment supply</p>
+        </div>
+    </div>
+
+    <a href="index.html" class="back">← Back to Home</a>
+</section>
+
+</body>
+</html>
