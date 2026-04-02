@@ -102,19 +102,45 @@
             margin-top: 80px;
         }
 
+        /* СКРОЛЛ ГАЛЕРЕЯ */
         .modal-thumbs {
             margin-top: 20px;
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px 20px;
+            justify-content: flex-start;
+            scrollbar-width: thin;
         }
 
         .modal-thumbs img {
-            width: 100px;
-            margin: 5px;
+            width: 110px;
+            height: 75px;
+            object-fit: cover;
+            flex-shrink: 0;
             cursor: pointer;
             opacity: 0.7;
+            border-radius: 6px;
+            transition: 0.3s;
         }
 
         .modal-thumbs img:hover {
             opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* КРАСИВЫЙ СКРОЛЛ */
+        .modal-thumbs::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .modal-thumbs::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .modal-thumbs::-webkit-scrollbar-thumb {
+            background: #00aaff;
+            border-radius: 10px;
         }
 
         .close {
@@ -182,8 +208,9 @@
 </div>
 
 <script>
+const modal = document.getElementById("modal");
+
 function openModal(images) {
-    const modal = document.getElementById("modal");
     const mainImage = document.getElementById("mainImage");
     const thumbs = document.getElementById("thumbs");
 
@@ -201,7 +228,14 @@ function openModal(images) {
 }
 
 function closeModal() {
-    document.getElementById("modal").style.display = "none";
+    modal.style.display = "none";
+}
+
+/* Закрытие по клику вне картинки */
+modal.onclick = function(e) {
+    if (e.target === modal) {
+        closeModal();
+    }
 }
 </script>
 
