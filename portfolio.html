@@ -1,172 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | KmarinEOOD</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | KmarinEOOD</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins', sans-serif; color:#fff; background:#001a30; }
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+.main-bg-layer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6)),
+        url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') center/cover no-repeat;
+}
 
-    <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
+/* HEADER */
+header {
+    position: fixed;
+    top: 0; left:0;
+    width: 100%;
+    height: 60px; /* фиксированная высота синего блока */
+    background: rgba(0, 32, 63, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
 
-        body {
-            font-family:'Poppins', sans-serif;
-            color:#fff;
-            background:#001a30;
-        }
+header a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 30px;
+    border-radius: 30px;
+    display: inline-block;
+    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
+    will-change: transform, background, box-shadow;
+}
 
-        .main-bg-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background:
-                linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6)),
-                url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') center/cover no-repeat;
-        }
+/* Hover effect */
+header a:hover {
+    color: #fff;
+    background: rgba(0,170,255,0.2);
+    border-color: rgba(0,170,255,0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,170,255,0.3), 0 0 15px rgba(0,170,255,0.5);
+}
 
-        /* HEADER */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(0, 32, 63, 0.95);
-            padding: 15px 8%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
+/* Active state */
+header a.active {
+    background: rgba(0,170,255,0.25);
+    border-color: rgba(0,170,255,0.6);
+    box-shadow: 0 5px 15px rgba(0,170,255,0.3);
+}
 
-        header a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 10px 20px;
-            border-radius: 50px;
-            display: inline-block;
-            border: 1px solid transparent;
+section {
+    padding: 100px 10% 80px;
+}
 
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            will-change: transform, background, box-shadow;
-        }
+h1 { text-align:center; font-size:48px; margin-bottom:50px; }
 
-        /* HOVER EFFECT (как на главной) */
-        header a:hover {
-            color: white;
-            background: rgba(0, 170, 255, 0.2);
-            border-color: rgba(0, 170, 255, 0.5);
-            transform: translateY(-5px);
-            box-shadow: 
-                0 10px 20px rgba(0, 170, 255, 0.3),
-                0 0 15px rgba(0, 170, 255, 0.5);
-        }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 30px;
+}
 
-        /* ACTIVE (текущая страница) */
-        header a.active {
-            background: rgba(0, 170, 255, 0.25);
-            border-color: rgba(0, 170, 255, 0.6);
-            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
-        }
+.item {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+}
 
-        section {
-            padding: 120px 10% 80px;
-        }
+.item:hover { transform: translateY(-10px); }
 
-        h1 {
-            text-align: center;
-            font-size: 48px;
-            margin-bottom: 50px;
-        }
+.item img { width: 100%; height: 250px; object-fit: cover; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+.item p { padding: 15px; }
 
-        .item {
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: 0.3s;
-            cursor: pointer;
-        }
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+    color: #00aaff;
+    text-decoration: none;
+}
 
-        .item:hover {
-            transform: translateY(-10px);
-        }
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left:0; top:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.9);
+    text-align:center;
+}
 
-        .item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
+.modal img {
+    max-width: 80%;
+    max-height: 70vh;
+    margin-top: 80px;
+}
 
-        .item p {
-            padding: 15px;
-        }
+.modal-thumbs {
+    margin-top:20px;
+}
 
-        .back {
-            display: block;
-            text-align: center;
-            margin-top: 40px;
-            color: #00aaff;
-            text-decoration: none;
-        }
+.modal-thumbs img {
+    width:100px;
+    margin:5px;
+    cursor:pointer;
+    opacity:0.7;
+}
 
-        /* MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 3000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            text-align: center;
-        }
+.modal-thumbs img:hover { opacity:1; }
 
-        .modal img {
-            max-width: 80%;
-            max-height: 70vh;
-            margin-top: 80px;
-        }
-
-        .modal-thumbs {
-            margin-top: 20px;
-        }
-
-        .modal-thumbs img {
-            width: 100px;
-            margin: 5px;
-            cursor: pointer;
-            opacity: 0.7;
-        }
-
-        .modal-thumbs img:hover {
-            opacity: 1;
-        }
-
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-        }
-    </style>
+.close {
+    position:absolute;
+    top:20px;
+    right:40px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+</style>
 </head>
-
 <body>
 
 <div class="main-bg-layer"></div>
@@ -176,68 +148,52 @@
 </header>
 
 <section>
-    <h1>Our Portfolio</h1>
+<h1>Our Portfolio</h1>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="item" onclick="openModal([
-            'image10.jpeg',
-            'image11.jpeg',
-            'image9.png'
-        ])">
-            <img src="image9.png" alt="">
-            <p>STX MAN 6S42MC7 spares delivery to M/V STAMFOED PIONEER (17 CTNS with gross weight 3993 kg)</p>
-        </div>
+<div class="item" onclick="openModal(['image10.jpeg','image11.jpeg','image9.png'])">
+<img src="image9.png" alt="">
+<p>STX MAN 6S42MC7 spares delivery to M/V STAMFOED PIONEER (17 CTNS with gross weight 3993 kg)</p>
+</div>
 
-        <div class="item" onclick="openModal([
-            'https://images.unsplash.com/photo-1470123808288-1e59739d9357',
-            'https://images.unsplash.com/photo-1500375592092-40eb2168fd21'
-        ])">
-            <img src="https://images.unsplash.com/photo-1470123808288-1e59739d9357" alt="">
-            <p>Engine maintenance support</p>
-        </div>
+<div class="item" onclick="openModal(['https://images.unsplash.com/photo-1470123808288-1e59739d9357','https://images.unsplash.com/photo-1500375592092-40eb2168fd21'])">
+<img src="https://images.unsplash.com/photo-1470123808288-1e59739d9357" alt="">
+<p>Engine maintenance support</p>
+</div>
 
-        <div class="item" onclick="openModal([
-            'https://images.unsplash.com/photo-1500375592092-40eb2168fd21',
-            'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'
-        ])">
-            <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21" alt="">
-            <p>Global logistics operations</p>
-        </div>
+<div class="item" onclick="openModal(['https://images.unsplash.com/photo-1500375592092-40eb2168fd21','https://images.unsplash.com/photo-1507525428034-b723cf961d3e'])">
+<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21" alt="">
+<p>Global logistics operations</p>
+</div>
 
-    </div>
+</div>
 
-    <a href="index.html" class="back">← Back to Home</a>
+<a href="index.html" class="back">← Back to Home</a>
 </section>
 
 <div id="modal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img id="mainImage" alt="">
-    <div class="modal-thumbs" id="thumbs"></div>
+<span class="close" onclick="closeModal()">&times;</span>
+<img id="mainImage" alt="">
+<div class="modal-thumbs" id="thumbs"></div>
 </div>
 
 <script>
-function openModal(images) {
-    const modal = document.getElementById("modal");
-    const mainImage = document.getElementById("mainImage");
-    const thumbs = document.getElementById("thumbs");
-
-    modal.style.display = "block";
-    mainImage.src = images[0];
-
-    thumbs.innerHTML = "";
-
-    images.forEach(src => {
-        const img = document.createElement("img");
-        img.src = src;
-        img.onclick = () => mainImage.src = src;
+function openModal(images){
+    const modal=document.getElementById("modal");
+    const mainImage=document.getElementById("mainImage");
+    const thumbs=document.getElementById("thumbs");
+    modal.style.display="block";
+    mainImage.src=images[0];
+    thumbs.innerHTML="";
+    images.forEach(src=>{
+        const img=document.createElement("img");
+        img.src=src;
+        img.onclick=()=>mainImage.src=src;
         thumbs.appendChild(img);
     });
 }
-
-function closeModal() {
-    document.getElementById("modal").style.display = "none";
-}
+function closeModal(){ document.getElementById("modal").style.display="none"; }
 </script>
 
 </body>
