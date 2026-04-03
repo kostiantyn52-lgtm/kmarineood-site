@@ -16,37 +16,16 @@ body {
     background:#001a30;
 }
 
-/* ПАРАЛЛАКС ФОН */
 .main-bg-layer {
-    position: absolute; /* вместо fixed */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    overflow: hidden;
-}
-
-.main-bg-layer img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    user-select: none;
-    transform: translate3d(0,0,0); /* аппаратное ускорение */
-    will-change: transform;
-    backface-visibility: hidden;
-}
-
-.main-bg-layer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6));
-    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6)),
+        url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') center/cover no-repeat;
 }
 
 /* HEADER */
@@ -210,9 +189,7 @@ h1::after {
 
 <body>
 
-<div class="main-bg-layer">
-    <img src="https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500" alt="">
-</div>
+<div class="main-bg-layer"></div>
 
 <header>
     <a href="index.html">Home</a>
@@ -265,7 +242,6 @@ h1::after {
 </div>
 
 <script>
-// ОТКРЫТИЕ МОДАЛЬНОГО ОКНА
 function openModal(images) {
     const modal = document.getElementById("modal");
     const mainImage = document.getElementById("mainImage");
@@ -288,7 +264,6 @@ function closeModal() {
     document.getElementById("modal").style.display = "none";
 }
 
-// АНИМАЦИЯ КАРТОЧЕК
 const items = document.querySelectorAll('.item');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -300,12 +275,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 items.forEach(item => observer.observe(item));
-
-// ПАРАЛЛАКС ФОНА
-window.addEventListener('scroll', () => {
-    const bg = document.querySelector('.main-bg-layer img');
-    bg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
-});
 </script>
 
 </body>
