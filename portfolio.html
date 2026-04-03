@@ -16,6 +16,7 @@ body {
     background:#001a30;
 }
 
+/* 🔥 FIXED BACKGROUND WITHOUT BUG */
 .main-bg-layer {
     position: fixed;
     top: 0;
@@ -23,17 +24,28 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
+    overflow: hidden;
+}
 
-    background:
-        linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6)),
-        url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') no-repeat;
+.main-bg-layer img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
 
-    background-size: cover;
-    background-position: 50% 50%; /* 🔥 фикс вместо center */
-    
-    /* 🔥 критично для Android */
-    transform: translate3d(0,0,0);
-    backface-visibility: hidden;
+/* overlay как у тебя был */
+.main-bg-layer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6));
 }
 
 /* HEADER */
@@ -80,7 +92,7 @@ section {
     padding: 120px 10% 80px;
 }
 
-/* ЗАГОЛОВОК В СТИЛЕ WHAT WE OFFER */
+/* ЗАГОЛОВОК */
 h1 {
     text-align:center;
     margin-bottom:50px;
@@ -124,7 +136,6 @@ h1::after {
     transform: translateY(0);
 }
 
-/* HOVER КАК НА ОСНОВНОМ САЙТЕ */
 .item:hover {
     transform: translateY(-10px);
     border-bottom: 5px solid #00aaff;
@@ -197,7 +208,9 @@ h1::after {
 
 <body>
 
-<div class="main-bg-layer"></div>
+<div class="main-bg-layer">
+    <img src="https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500" alt="">
+</div>
 
 <header>
     <a href="index.html">Home</a>
