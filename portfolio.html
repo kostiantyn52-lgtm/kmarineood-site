@@ -16,9 +16,9 @@ body {
     background:#001a30;
 }
 
-/* СТАБИЛЬНЫЙ ФОН */
+/* ПАРАЛЛАКС ФОН */
 .main-bg-layer {
-    position: fixed;
+    position: absolute; /* вместо fixed */
     top: 0;
     left: 0;
     width: 100%;
@@ -33,6 +33,9 @@ body {
     object-fit: cover;
     pointer-events: none;
     user-select: none;
+    transform: translate3d(0,0,0); /* аппаратное ускорение */
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .main-bg-layer::after {
@@ -262,6 +265,7 @@ h1::after {
 </div>
 
 <script>
+// ОТКРЫТИЕ МОДАЛЬНОГО ОКНА
 function openModal(images) {
     const modal = document.getElementById("modal");
     const mainImage = document.getElementById("mainImage");
@@ -284,6 +288,7 @@ function closeModal() {
     document.getElementById("modal").style.display = "none";
 }
 
+// АНИМАЦИЯ КАРТОЧЕК
 const items = document.querySelectorAll('.item');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -295,6 +300,12 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 items.forEach(item => observer.observe(item));
+
+// ПАРАЛЛАКС ФОНА
+window.addEventListener('scroll', () => {
+    const bg = document.querySelector('.main-bg-layer img');
+    bg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+});
 </script>
 
 </body>
