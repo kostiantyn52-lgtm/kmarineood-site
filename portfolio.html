@@ -8,208 +8,164 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-body {
-    font-family:'Poppins', sans-serif;
-    color:#fff;
-    background:#001a30;
-}
+    body {
+        font-family:'Poppins', sans-serif;
+        color:#fff;
+        background:#001a30;
+    }
 
-/* СТАБИЛЬНЫЙ ФОН */
-.main-bg-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
+    .main-bg-layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background:
+            linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6)),
+            url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') center/cover no-repeat;
+    }
 
-.main-bg-layer img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    user-select: none;
-}
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(0, 32, 63, 0.95);
+        padding: 15px 8%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        z-index: 1000;
+    }
 
-.main-bg-layer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6));
-    pointer-events: none;
-}
+    header a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 10px 20px;
+        border-radius: 50px;
+        display: inline-block;
+        border: 1px solid transparent;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        will-change: transform, background, box-shadow;
+    }
 
-/* HEADER */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 32, 63, 0.95);
-    padding: 15px 8%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    z-index: 1000;
-}
+    header a:hover {
+        background: rgba(0, 170, 255, 0.2);
+        border-color: rgba(0, 170, 255, 0.5);
+        transform: translateY(-5px);
+        box-shadow: 
+            0 10px 20px rgba(0, 170, 255, 0.3),
+            0 0 15px rgba(0, 170, 255, 0.5);
+    }
 
-/* HOME как кнопка */
-header a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 10px 20px;
-    border-radius: 50px;
-    display: inline-block;
-    border: 1px solid transparent;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    will-change: transform, background, box-shadow;
-}
+    section {
+        padding: 120px 10% 80px;
+    }
 
-header a:hover {
-    background: rgba(0, 170, 255, 0.2);
-    border-color: rgba(0, 170, 255, 0.5);
-    transform: translateY(-5px);
-    box-shadow: 
-        0 10px 20px rgba(0, 170, 255, 0.3),
-        0 0 15px rgba(0, 170, 255, 0.5);
-}
+    h1 {
+        text-align: center;
+        font-size: 48px;
+        margin-bottom: 50px;
+    }
 
-/* SECTION */
-section {
-    padding: 120px 10% 80px;
-}
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
 
-/* ЗАГОЛОВОК В СТИЛЕ WHAT WE OFFER */
-h1 {
-    text-align:center;
-    margin-bottom:50px;
-    font-size:36px;
-    color:#ffffff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
-}
+    .item {
+        background: rgba(255,255,255,0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.6s ease-out;
+    }
 
-h1::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: #00aaff;
-    margin: 15px auto;
-}
+    .item.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
+    .item:hover {
+        transform: translateY(-10px);
+    }
 
-/* КАРТОЧКИ */
-.item {
-    background: rgba(255,255,255,0.05);
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.4s ease;
-    border-bottom: 5px solid transparent;
-}
+    .item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
 
-.item.show {
-    opacity: 1;
-    transform: translateY(0);
-}
+    .item p {
+        padding: 15px;
+    }
 
-/* HOVER КАК НА ОСНОВНОМ САЙТЕ */
-.item:hover {
-    transform: translateY(-10px);
-    border-bottom: 5px solid #00aaff;
-    box-shadow: 0 15px 35px rgba(0,43,78,0.2);
-}
+    .back {
+        display: block;
+        text-align: center;
+        margin-top: 40px;
+        color: #00aaff;
+        text-decoration: none;
+    }
 
-.item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
+    /* MODAL */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 3000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.9);
+        text-align: center;
+    }
 
-.item p {
-    padding: 15px;
-}
+    .modal img {
+        max-width: 80%;
+        max-height: 70vh;
+        margin-top: 80px;
+    }
 
-/* BACK LINK */
-.back {
-    display: block;
-    text-align: center;
-    margin-top: 40px;
-    color: #00aaff;
-    text-decoration: none;
-}
+    .modal-thumbs {
+        margin-top: 20px;
+    }
 
-/* MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 3000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
-    text-align: center;
-}
+    .modal-thumbs img {
+        width: 100px;
+        margin: 5px;
+        cursor: pointer;
+        opacity: 0.7;
+    }
 
-.modal img {
-    max-width: 80%;
-    max-height: 70vh;
-    margin-top: 80px;
-}
+    .modal-thumbs img:hover {
+        opacity: 1;
+    }
 
-.modal-thumbs {
-    margin-top: 20px;
-}
-
-.modal-thumbs img {
-    width: 100px;
-    margin: 5px;
-    cursor: pointer;
-    opacity: 0.7;
-}
-
-.modal-thumbs img:hover {
-    opacity: 1;
-}
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-}
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+    }
 </style>
 </head>
 
 <body>
 
-<div class="main-bg-layer">
-    <img src="https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500" alt="">
-</div>
+<div class="main-bg-layer"></div>
 
 <header>
     <a href="index.html">Home</a>
@@ -220,6 +176,7 @@ h1::after {
 
     <div class="grid">
 
+        <!-- CARD 1 -->
         <div class="item" onclick="openModal([
             'image10.jpg',
             'image09.jpg',
@@ -229,6 +186,7 @@ h1::after {
             <p>STX MAN 6S42MC7 spares delivery to M/V STAMFOED PIONEER (17 CTNS with gross weight 3993 kg)</p>
         </div>
 
+        <!-- CARD 2 -->
         <div class="item" onclick="openModal([
             'image01.jpg',
             'image02.jpg',
@@ -242,6 +200,7 @@ h1::after {
             <p>Major Overhaul and Technical Maintenance Support for the 4x Caterpillar 3612B Main Engines - M/V NIR N</p>
         </div>
 
+        <!-- CARD 3 -->
         <div class="item" onclick="openModal([
             'https://images.unsplash.com/photo-1500375592092-40eb2168fd21',
             'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'
@@ -255,6 +214,7 @@ h1::after {
     <a href="index.html" class="back">← Back to Home</a>
 </section>
 
+<!-- MODAL -->
 <div id="modal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <img id="mainImage" alt="">
@@ -284,6 +244,7 @@ function closeModal() {
     document.getElementById("modal").style.display = "none";
 }
 
+// Анимация появления карточек при скролле
 const items = document.querySelectorAll('.item');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
