@@ -16,6 +16,7 @@ body {
     background:#001a30;
 }
 
+/* СТАБИЛЬНЫЙ ФОН */
 .main-bg-layer {
     position: fixed;
     top: 0;
@@ -23,9 +24,26 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background:
-        linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6)),
-        url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') center/cover no-repeat;
+    overflow: hidden;
+}
+
+.main-bg-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+.main-bg-layer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6));
+    pointer-events: none;
 }
 
 /* HEADER */
@@ -189,7 +207,9 @@ h1::after {
 
 <body>
 
-<div class="main-bg-layer"></div>
+<div class="main-bg-layer">
+    <img src="https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500" alt="">
+</div>
 
 <header>
     <a href="index.html">Home</a>
