@@ -10,39 +10,40 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
-html, body {
-    overflow-x: hidden;
-}
-
 body {
     font-family:'Poppins', sans-serif;
     color:#fff;
     background:#001a30;
 }
 
-/* 🔥 ПОЛНЫЙ ФИКС ФОНА */
+/* СТАБИЛЬНЫЙ ФОН */
 .main-bg-layer {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
     overflow: hidden;
-
-    transform: translate3d(0,0,0);
-    backface-visibility: hidden;
-    will-change: transform;
 }
 
-.main-bg-layer::before {
-    content: "";
+.main-bg-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+.main-bg-layer::after {
+    content: '';
     position: absolute;
-    inset: -5%;
-
-    background:
-        linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6)),
-        url('https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500') center / cover no-repeat;
-
-    transform: scale(1.08);
-    will-change: transform;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,26,48,0.6));
+    pointer-events: none;
 }
 
 /* HEADER */
@@ -59,6 +60,7 @@ header {
     z-index: 1000;
 }
 
+/* HOME как кнопка */
 header a {
     color: white;
     text-decoration: none;
@@ -88,6 +90,7 @@ section {
     padding: 120px 10% 80px;
 }
 
+/* ЗАГОЛОВОК В СТИЛЕ WHAT WE OFFER */
 h1 {
     text-align:center;
     margin-bottom:50px;
@@ -107,12 +110,14 @@ h1::after {
     margin: 15px auto;
 }
 
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
+/* КАРТОЧКИ */
 .item {
     background: rgba(255,255,255,0.05);
     border-radius: 12px;
@@ -129,6 +134,7 @@ h1::after {
     transform: translateY(0);
 }
 
+/* HOVER КАК НА ОСНОВНОМ САЙТЕ */
 .item:hover {
     transform: translateY(-10px);
     border-bottom: 5px solid #00aaff;
@@ -145,6 +151,7 @@ h1::after {
     padding: 15px;
 }
 
+/* BACK LINK */
 .back {
     display: block;
     text-align: center;
@@ -153,6 +160,7 @@ h1::after {
     text-decoration: none;
 }
 
+/* MODAL */
 .modal {
     display: none;
     position: fixed;
@@ -199,7 +207,9 @@ h1::after {
 
 <body>
 
-<div class="main-bg-layer" id="bg"></div>
+<div class="main-bg-layer">
+    <img src="https://images.unsplash.com/photo-1524522173746-f628baad3644?q=80&w=2500" alt="">
+</div>
 
 <header>
     <a href="index.html">Home</a>
@@ -285,19 +295,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 items.forEach(item => observer.observe(item));
-
-/* 🔥 ФИНАЛЬНЫЙ ФИКС ДЛЯ ANDROID */
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const bg = document.getElementById('bg');
-    const current = window.scrollY;
-
-    if (Math.abs(current - lastScroll) > 2) {
-        bg.style.transform = `translate3d(0, ${current * 0.0001}px, 0)`;
-    }
-
-    lastScroll = current;
-});
 </script>
 
 </body>
